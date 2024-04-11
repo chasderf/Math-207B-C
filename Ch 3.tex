@@ -1,0 +1,218 @@
+\documentclass{article}
+\usepackage{amsmath}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+
+\title {Math 207B Partial Differential Equations: Ch 3: Nonlinear First-Order PDE}
+
+\author{Charlie Seager}
+
+\maketitle
+
+\textbf {Definition} A $C^2$ function u = u(x;a) is called a complete integral in U x A provided \\
+(i) \tab \tab u(x; a) solves the PDE (1) for each $a \in A$ \\
+and \\
+(ii) \tab \tab rank$(D_a u, D^2_{xa}u ) = n \tab (x \in U, a \in A)$.
+
+\textbf {Definition} Let u = u(x;a) be a $C^1$ function of $x \in U, a \in A$, where $U \subset R^n$ and $A \subset R^m$ are open sets. Consider the vector equation 
+\begin{center}
+$D_a u(x;a) = 0 \tab (x \in U, a \in A)$
+\end{center}
+Suppose that we can solve (10) for the paramter a as a $C^1$ function of x,
+\begin{center}
+$a = \phi(x)$
+\end{center}
+thus \\
+\begin{center}
+$D_a u(x; \phi(x))=0 \tab (x \in U)$
+\end{center}
+We then call
+\begin{center}
+$v(x) := u(x; \phi(x)) = 0 \tab (x \in U)$
+\end{center}
+the envelope of the functions $\{u(\cdot ; a)\}_{a \in A}$
+
+\textbf {Theorem 1 (Construction of new solutions)} Suppose for each $a \in A$ as above that $u=u(\cdot ; a)$ solves the partial differential equation (1). Assume further that the envelope v, defined by (12) and (13) above, exists and is a $C^1$ function. Then v solves (1) as well. \\ The envelope v defined above is sometimes called a singular integral of (1).
+
+\textbf {Definition} The general integral (depending on h) is the envelope v'=v'(x) of the functions
+\begin{center}
+$u'(x;a') = u(x; a',h(a')) \tab (x \in U, a' \in A')$
+\end{center}
+provided this envelope exists and is $C^1$
+
+\textbf {Chapter 3.2 Characteristics}
+
+\textbf {Theorem 1 (Structure of characteristic ODE)} Let $u \in C^2(U)$ solve the nonlinear, first-order partial differential equation (1) in U. Assume $x(\cdot)$ solves the ODE (11)(c), where $p(\cdot) = Du(x(\cdots)), z(\cdots) = u(x(\cdot)).$ Then $p(\cdot)$ solves the ODE (11)(a) and $z(\cdot)$ solves the ODE (11)(b), for those s such that $x(s) \in U$.
+
+\textbf {Theorem 2 (Local Existence Theorem)} The function u defined above is $C^2$ and solves the PDE
+\begin{center}
+$F(Du(x), u(x), x) = 0 \tab (x \in V)$
+\end{center}
+with the boundary condition
+\begin{center}
+$u(x) = g(x) \tab (x \in \Gamma \cap V)$
+\end{center}
+
+\textbf {Chapter 3.3 Introduction to Hamilton-Jacobi Equations}
+
+\textbf {Theorem 1 (Euler-Lagrange equations)} The function $x(\cdot)$ solves the system of Euler-Lagrange equations.
+\begin{center}
+$- \frac{d}{ds} (D_v L(\dot{x}, x(s))) + D_x L(\dot{x}(s), x(s)) = 0 \tab (0 \leq s \leq t)$
+\end{center}
+This is a vector equation, consisting of n coupled second-order equations.
+
+\textbf {Definition} The Hamiltonian H associated with the Lagrangian L is 
+\begin{center}
+$H(p,x) := p \cdot v(p,x) - L(v(p,x),x) \tab (p, x \in R^n)$
+\end{center}
+where the function $v(\cdot)$ is defined implicitly by (9).
+
+\textbf {Theorem 2 (Derivation of Hamilton's ODE)} The functions $x(\cdot)$ and $p(\cdot)$ satisfy Hamilton's equations:
+\begin{center}
+\{ $\dot{x}(s) = D_p H(p(s), x(s))$ \\
+\{ $\dot{p}(s) = -D_x H(p(s), x(s))$  
+\end{center}
+for $0 \leq s \leq t$ Furthermore, the mapping $s \mapsto H(p(s), x(s))$ is constant.
+
+\textbf {Definition} The Legendre transform of L is 
+\begin{center}
+$L*(p) := sup_{q \in R^n} \{p \cdot v - L(v)\} \tab (p \in R^n)$
+\end{center}
+This is also referred to as the Fenchel transform.
+
+\textbf {Theorem 3 (Convex duality of Hamiltonian and Lagrangian)} Assume L satisfies (11), (12) and define H by (13), (14) \\
+\tab (i) Then
+\begin{center}
+the mapping $p \mapsto H(p)$ is convex
+\end{center}
+and 
+\begin{center}
+$\lim_{|p| \to \infty} \frac{H(p)}{|p|} = + \infty$
+\end{center}
+\tab Thus H is the Legendre transform of L and vice versa
+\begin{center}
+$L = H*, H = L*$
+\end{center}
+
+\textbf {Theorem 4 (Hopf-Lax formula)} If $x \in R^n$ and $t > 0$, then the solution u = u(x,t) of the minimization problem (17) is
+\begin{center}
+$u(x,t) = min_{y \in R^n} \{ tL (\frac{x-y}{t}) + g(y) \}$
+\end{center}
+
+\textbf {Definition} We call the expression on the right hand side of (21: the last theorem 4) the Hopf-Lax formula.
+
+\textbf {Theorem 5 (Solving the Hamilton-Jacobi equation)} Suppose $x \in R^n, t > 0$ and u defined by the Hopf-Lax formula (21) is differnetiable at a point $(x,t) \in R^n x (0, \infty)$. Then
+\begin{center}
+$u_t(x,t) + H(Du(x,t)) = 0$
+\end{center}
+
+\textbf {Theorem 6 (Hopf-Lax formula as solution)} The function u defined by the Hopf-Lax formula (21) is Lipschitz continuous, is differentiable a.e. in $R^n x (0, \infty)$ and solves the initial-value problem
+\begin{center}
+\{ $u_t + H(Du) = 0 \tab$ a.e. in $R^n x (0, \infty)$ \\
+\{ \tab u=g \tab on $R^n x \{t=0\}$
+\end{center}
+
+\textbf {Definition} A $C^2$ convex function $H: R^n \to R$ is called uniformly convex (with constant $\theta > 0$) if 
+\begin{center}
+$\sum_{i,j=1}^n H_{p_{i}p_{j}} (p) \xi_i \xi_j \geq \theta |\xi|^2$ \tab for all $p, \xi \in R^n$
+\end{center}
+
+\textbf {Theorem 7 (Uniqueness of weak solutions)} Assume H is $C^2$ and satisfies (19) and g satisfies (20). Then there exists at most one weak solution of the initial-value problem (38).
+
+\textbf {Theorem 8 (Hopf-Lax formula as weak solution)} Suppose H is $C^2$ and satisfies (19) and g satisfies (20). If either g is semiconcave or H is uniformly convex, then
+\begin{center}
+$u(x,t) = min_{y \in R^n} \{tL ( \frac{x-y}{t}) + g(y) \}$
+\end{center}
+is the unique weak solution of the initial-value problem (38) for the Hamilton-Jacobi equation.
+
+\textbf {Chapter 3.4 Introduction to conservation laws}
+
+\textbf {Definition} We say that $u \in L^\infty(R x (0, \infty))$ is an integral solution of (1), provided equality (4) holds for each test function v satsifying (2).
+
+\textbf {Theorem 1 (Lax-Oleinik formula)} Assume $F: R \to R$ is smooth and uniformly convex and $g \in L^\infty (R)$ \\
+\tab (i) For each time $t > 0$, there exists for all but at most countably many values of $x \in R$ a unique poitn y(x,t) such that 
+\begin{center}
+$min_{y \in R} \{ tL ( \frac{x-y}{t}) + h(y) \} = tL (\frac{x-y(x,t)}{t}) + h(y(x,t))$.
+\end{center}
+\tab (ii) The mapping $x \mapsto y(x,t)$ is nondecreasing \\
+\tab (iii) For each time $t > 0$, the function u defined on (27) is 
+\begin{center}
+$u(x,t) = G(\frac{x-y(x,t)}{t})$
+\end{center}
+for a.e. x. In particular, formula (29) holds for a.e. $(x,t) \in R x (0, \infty)$
+
+\textbf {Definition} We call equation (29) the Lax-Oleinik formula for the solution (1) where h is defined by (23) and L by (25)
+
+\textbf {Theorem 2 (Lax-Oleinik formula as integral solution)} Under the assumptions of Theorem 1, the function u defined by (29) is an integrla solution of the initial-value problem (1).
+
+\textbf {Definition} We call inequality (36) the entropy condition.
+
+\textbf {Definition} We say that a function $u \in L^\infty (R x (0,\infty))$ is an entropy solution of the initial-value problem
+\begin{center}
+$\{ u_t + F(u)_x = 0$ \tab in $R x (0, \infty)$ \\
+\{ \tab u = g \tab on $R x \{t =0\}$ 
+\end{center}
+provided
+\begin{center}
+$\int_0^\infty \int_{-\infty}^\infty uv_t + F(u)v_x dx dt + \int_{-\infty}^\infty gvdx|_{t=0} = 0$
+\end{center}
+for all test functions $v: R x [0, \infty) \to R$ with compact support and 
+\begin{center}
+$u(x + z, t) - u(x,t) \leq C(1 + \frac{1}{t})z$
+\end{center}
+for some constant $C \geq 0$ and a.e. $x, z \in R, t > 0$ with $z > 0$
+
+\textbf {Theorem 3 (Uniqueness of entropy solutions)} Assume F is convex and smooth. Then there exists-up to a set of measure zero-at most one entropy solution of (37).
+
+\textbf {Theorem 4 (Solution of Riemann's problem)} \\
+\tab (i) If $u_l > u_r$, the unique entropy solution of the Riemann problem (1), (53) is
+\begin{center}
+$u(x,t) := \{ u_l \tab $ if $\frac{x}{t} < \sigma$ \\
+$ \tab \{ u_r \tab $ if $\frac{x}{t} > \sigma$ \tab $(x \in R, t > 0)$,
+\end{center}
+where 
+\begin{center}
+$\sigma := \frac{F(u_l)-F(u_r)}{u_l - u_r}$
+\end{center}
+\tab (ii) If $u_l < u_r$, the unique entropy solution of the Riemann problem (1) (53) is
+\begin{center}
+$u(x,t) := \{ \tab u_l$ \tab if $\frac{x}{t} < F'(u_l)$ \\
+\tab \{$G(\frac{x}{t}$ \tab if $F'(u_l) < \frac{x}{t} < F'(u_r) \tab (x \in R, t > 0)$ \\
+\tab \{$\tab u_r$ \tab if $\frac{x}{t} > F'(u_r)$ 
+\end{center}
+
+\textbf {Theorem 5 (Asymptotics in $L^\infty$-norm)} There exists a constant C such that
+\begin{center}
+$|u(x,t)| \leq \frac{C}{t^{1/2}}$
+\end{center}
+for all $x \in R, t > 0$
+
+\textbf {Theorem 6 (Asymptotics in $L^1$-norm)}. Assume that $p, q > 0$. Then there exists a constant C such that
+\begin{center}
+$\int_{-\infty}^{\infty} |u(\cdot , t) -N (\cdot , t)| dx \leq \frac{C}{t^{1/2}}$
+\end{center}
+for all $t > 0$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

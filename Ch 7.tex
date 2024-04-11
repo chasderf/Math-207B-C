@@ -1,0 +1,404 @@
+\documentclass{article}
+\usepackage{amsmath}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+\title {Math 207C Partial Differential Equations: Ch 7 Linear evolution equations}
+
+\author{Charlie Seager}
+
+\maketitle
+
+\textbf {Chapter 7.1 Second-Order Parabolic Equations}
+
+\textbf {Definition} We say that the partial differential operator $\frac{\partial}{\partial t} + L$ is (uniformly) parabolic if there exists a constant $\theta > 0$ such that
+\begin{center}
+$\sum_{i,j=1}^n a^{ij}(x,t) \xi_i \xi_j \geq \theta |\xi|^2$
+\end{center}
+for all $(x,t) \in U_T, \xi \in R^n$
+
+\textbf {Definition} We say a function
+\begin{center}
+$u \in L^2 (0, T; H_0^1(U))$, with $u^{'} \in L^2(0, T; H^{-1}(U)),$
+\end{center}
+is a weak solution of the parabolic initial/boundary-value problem (1) provided
+\tab (i) $\langle u^{'}, v \rangle + B[u, v; t] = (f,v)$ \\
+for each $v \in H_0^1(U)$ and a.e. time $0 \leq t \leq T$ and \\
+\tab (ii) u(0) = g
+
+\textbf {Theorem 1 (Construction of approximate solutions)} For each integer m = 1,2,... there exists a unique function $u_m$ of the form (14) satisfying (15), (16).
+
+\textbf {Theorem 2 (Energy estimates)}. There exists a constant C, depending only on U,T and the coefficients of L, such that
+\begin{center}
+$max_{0 \leq t \leq T} ||u_m(t)||_{L^{2}(U)} + ||u_m||_{L^{2}(0, T; H_{0}^{1}(U))} + ||u^{'}_{m}||_{L^{2}(0, T; H^{-1}(U))} \leq C(||f||_{L^{2}(0, T; L^{2}(U))} + ||g||_{L^{2}(U)}$
+\end{center}
+for m = 1,2,...
+
+\textbf {Theorem 3 (Existence of weak solution)} There exists a weak solution of (11).
+
+\textbf {Theorem 4 (Uniqueness of weak solutions)} A weak solution of (11) is unique.
+
+\textbf {Theorem 5 (Improved regularity)} \\ \tab (i) Assume
+\begin{center}
+$g \in H_0^1(U), f \in L^2(0, T; L^2(U))$
+\end{center}
+Suppose also $u \in L^2(0, T; H_0^1(U))$, with $u^{'} \in L^2(0, T; H^{-1}(U))$, is the weak solution of
+\begin{center}
+$\{ u_t + Lu = f$ \tab in $U_T$ \\
+\{ u = 0 \tab on $\partial U x [0,T]$ \\
+\{ u = g \tab on $U x \{t=0\}$
+\end{center}
+Then in fact
+\begin{center}
+$u \in L^2(0, T; H^2(U)) \cap L^{\infty} (0, T; H_0^1(U)), u^{'} \in L^2(0, T; L^2(U))$
+\end{center}
+and we have the estimate
+\begin{center}
+$ess sup_{0 \leq t \leq T} ||u(t)||_{H_{0}^{1}(U)} + ||u||_{L^{2}(0, T; H^{2}(U))} + ||u^{'}||_{L^{2}(0, T; L^{2}(U))} \leq C(||f||_{L^{2}(0, T; L^{2}(U))} + ||g||_{H_{0}^{1}(U)})$
+\end{center}
+the constant C depending only on U,T and the coefficient of L  \\ 
+\tab (ii) If, in addition, 
+\begin{center}
+$g \in H^2(U), f^{'} \in L^2(0, T; L^2(U))$
+\end{center}
+then
+\begin{center}
+$u \in L^{\infty}(0, T; H^2(U)), u^{'} \in L^{\infty} (0, T; L^2(U)) \cap L^2(0, T; H_0^1(U)), u^{"} \in L^2(0, T; H^{-1}(U))$
+\end{center}
+with the estimate
+\begin{center}
+$ess sup_{0 \leq t \leq T} (||u(t)||_{H^{2}(U)} + ||u^{'}(t)||_{L^{2}(U)} + ||u^{'}||_{L^{2}(0, T; H_{0}^{1}(U))} + ||u^{"}||_{L^{2}(0, T; H^{-1}(U))} \leq C(||f||_{H^{1}(0, T; L^{2}(U))} + ||g||_{H^{2}(U)})$
+\end{center}
+
+\textbf {Theorem 6 (Higher regularity)} Assume 
+\begin{center}
+$g \in H^{2m+1}(U), \frac{d^{k}f}{dt^{k}} \in L^2 (0, T; H^{2m-2k}(U)) \tab (k=0,...,m)$
+\end{center}
+Suppose also that the following mth-order compatibility conditions hold:
+\begin{center}
+$\{ g_0 := g \in H_0^1(U), g_1 := f(0) - L_{g_{0}} \in H_0^1(U)$ \\
+\{ ...., $g_m := \frac{d^{m-1}}{dt^{m-1}} (0) - L_{g_{m-1}} \in H_0^1(U)$
+\end{center}
+Then 
+\begin{center}
+$\frac{d^k u}{dt^k} \in L^2 (0, T; H^{2m+2-2k}(U)) \tab (k = 0,...,m+1);$
+\end{center}
+and we have the estimate
+\tab $\sum_{k=0}^{m+1} ||\frac{d^k u}{dt^k}||_{L^{2} (0, T; H^{2m+2-2k}(U))} \leq C(\sum_{k=0}^m ||\frac{d^kf}{dt^k}||_{L^{2}(0, T; H^{2m-2k}(U))} + ||g||_{H^{2m+1}(U)})$
+the constant C depending only on m, U, T and the coefficients of L.
+
+\textbf {Theorem 7 (Infinite differentiability)}. Assume
+\begin{center}
+$g \in C^{\infty}(\bar{U}), f \in C^{\infty}(\bar{U}_T)$
+\end{center}
+and the mth-order compatibility conditions hold for m=0,1,... Then the parabolic initial/boundary value problem (11) has a unique solution
+\begin{center}
+$u \in C^{\infty}(\bar{U}_T)$
+\end{center}
+
+\textbf {Theorem 8 (Weak maximum principle)} Assume $u \in C^2_1(U_T) \cap C(\bar{U}_T)$ and 
+\begin{center}
+c = 0 \tab in $U_T$
+\end{center}
+\tab (i) If
+\begin{center}
+$u_t + Lu \leq 0$ \tab in $U_T$
+\end{center}
+then
+\begin{center}
+$max_{\bar{U}_{T}} u = max_{\Gamma_{T}}u$
+\end{center}
+\tab (ii) Likewise, if
+\begin{center}
+$u_t + Lu \geq 0$ \tab in $U_T$
+\end{center}
+then 
+\begin{center}
+$min_{\bar{U}_{T}} u = min_{\Gamma_{T}} u$
+\end{center}
+
+\textbf {Theorem 9 (Weak maximum principle for $c \geq 0$)} Assume $u \in C_1^2(U_T) \cap C(\bar{U}_{T})$ and 
+\begin{center}
+$c \geq 0$ \tab in $U_T$
+\end{center}
+\tab (i) If 
+\begin{center}
+$u_t + Lu \leq 0$ \tab in $U_T$,
+\end{center}
+then
+\begin{center}
+$max_{\bar{U}_T} u \leq max_{\Gamma_{T}} u^+$
+\end{center}
+\tab (ii) If
+\begin{center}
+$u_t + Lu \geq 0$ \tab in $U_T$
+\end{center}
+then
+\begin{center}
+$min_{\bar{U}_T} \geq - max_{\Gamma_{T}} u^-$.
+\end{center}
+
+\textbf {Theorem 10 (Parabolic Harnack inequality)} Assume $u \in C_1^2(U_T)$ solves
+\begin{center}
+(68) \tab $u_t + Lu = 0$ \tab in $U_T$
+\end{center}
+and
+\begin{center}
+$u \geq 0$ \tab in $U_T$
+\end{center}
+Suppose $V \subset \subset U$ is connected. Then for each $0 \leq t_1 \leq t_2 \leq T$, there exists a constant C such that
+\begin{center}
+(69) \tab $sup_{V} u(\cdot, t_1) \leq C inf_{V} u (\cdot, t_2)$
+\end{center}
+The constant C depends only on $V, t_1, t_2$ and the coefficients of L.
+
+\textbf {Theorem 11 (Strong maximum principle)} Assume $u \in C_1^2(U_T) \cap C(\bar{U}_T)$ and
+\begin{center}
+c = 0 \tab in $U_T$
+\end{center}
+Suppose also U is connected \\
+\tab (i) If
+\begin{center}
+$u_{t _ {Lu}} \leq 0$ \tab in $U_T$
+\end{center}
+and u attains its maximum over $\bar{U}_T$ at a point $(x_0, t_0) \in U_T$, then 
+\begin{center}
+u is constant on $U_{t_{0}}$
+\end{center}
+\tab (ii) Likewise, if
+\begin{center}
+$u_t + Lu \geq 0$ \tab in $U_T$
+\end{center}
+and u attains its minimum over $\bar{U}_T$ at a point $(x_0, t_0) \in U_T$, then 
+\begin{center}
+u is constant on $U_{t_{0}}$
+\end{center}
+
+\textbf {Theorem 12 (Strong maximum principle for $c \geq 0$)} Assume $u \in C_1^2(U_T) \cap C(\bar{U}_T)$ and
+\begin{center}
+$c \geq 0$ \tab in $U_T$
+\end{center}
+Suppose also U is connected \\
+\tab (i) If
+\begin{center}
+$u_{t_{Lu}} \leq 0$ \tab in $U_T$
+\end{center}
+and u attains a nonnegative maximum over $\bar{U}_T$ at a point $(x_0, t_0) \in U_T$, then
+\begin{center}
+u is constant on $U_{t_{0}}$
+\end{center}
+\tab (ii) Similarly, if
+\begin{center}
+$u_t + Lu \geq 0$ \tab in $U_T$
+\end{center}
+and u attains a nonpositive minimum over $\bar{U}_T$ at a point $(x_0, t_0) \in U_T$, then
+\begin{center}
+u is constant on $U_{t_{0}}$
+\end{center}
+
+\textbf {Chapter 7.2 Second Order Hyperbolic equations} \\ Second-order hyperbolic equations are natural generalizations of the wave equation (2.4) We will build in this section appropiately defined weak solutions and study their uniqueness, smoothness and other properties. It is interesting, given the utterly different physical character of second-order parabolic and hyperbolic PDE, that we can provide rather similar functional analytic constructions of weak solutions.
+
+\textbf {Definition} We say the partial differential operator $\frac{\partial^2}{\partial t^2} + L$ is (uniformly) hyperbolic if there exists a constant $\theta > 0$ such that
+\begin{center}
+(4) \tab $\sum_{i,j=1}^n a^{ij}(x,t) \xi_i \xi_j \geq \theta |\xi|^2$
+\end{center}
+for all $(x,t) \in U_T, \xi \in R^n$
+
+\textbf {Definition} We say a function
+\begin{center}
+$u \in L^2(0, T; H_0^1(U))$, with $u^{'} \in L^2(0, T; L^2(U)), u^{"} \in L^2(0, T; H^{-1}(U))$
+\end{center}
+is a weak solution of the hyperbolic initial/boundary-value problem (1) provided \\
+\tab (i) $\langle u^{"}, v \rangle + B[u, v; t] = (f,v)$ \\
+for each $v \in H_0^1(U)$ and a.e. time $0 \leq t \leq T$ and \\
+\tab (ii) $u(0) = g, u^{'}(0) = h$
+
+\textbf {Theorem 1 (Construction of approximate solutions)} For each integer m = 1,2,..., there exists a unique function $u_m$ of the form (13) satisfying (14)-(16).
+
+\textbf {Theorem 2 (Energy estimates)} There exists a constant C, depending only on U, T and the coefficients of L , such that
+\begin{center}
+(19) \tab \tab 
+$max_{0 \leq t \leq T} (||u_m(t)||_{H_{0}^{1}(U)} + ||u^{'}_{m}(t)||_{L^{2}(U)}) + ||u^{"}_{m}||_{L^{2}(0, T; H^{-1}(U))} \leq C( ||f||_{L^{2}(0, T; L^{2}(U))} + ||g||_{H_{0}^{1}(U)} + ||h||_{L^{2}(U)})$ 
+\end{center}
+for m = 1,2,...
+
+\textbf {Theorem 3 (Existence of weak solution)} There exists a weak solution of (1).
+
+\textbf {Theorem 4 (Uniqueness of weak solution)} A weak solution of (1) is unique.
+
+\textbf {Theorem 5 (Improved regularity)} \\ \tab (i) Assume
+\begin{center}
+$g \in H_{0}^{1} (U), h \in L^2(U), f \in L^2(0, T; L^2(U))$
+\end{center}
+and suppose also $u \in L^2(0, T; H_{0}^{1}(U))$ with $u^{'} \in L^2(0, T; L^2(U)), u^{"} \in L^2(0, T; H^{-1}(U))$, is the weak solution of the problem
+\begin{center}
+$\{ u_{tt} + Lu = f$ \tab in $U_T$ \\
+\{ \tab u=0 \tab on $\partial U x [0,T]$ \\
+\{$u = g, u_t = h$ \tab on $U x \{t=0\}$
+\end{center}
+Then in fact
+\begin{center}
+$u \in L^{\infty}(0, T; H_{0}^{1}(U)), u^{'} \in L^{\infty} (0, T; L^2(U))$
+\end{center}
+and we have the estimate
+\begin{center}
+ess $sup_{0 \leq t \leq T} (||u(t)||_{H_{0}^{1}(U)} + ||u^{'}(t)||_{L^{2}(U)}) \leq C(||f||_{L^{2}(0, T; L^{2}(U))} + ||g||_{H_{0}^{1}(U)} + ||h||_{L^{2}(U)}$
+\end{center}
+\tab (ii) If, in addition, 
+\begin{center}
+$g \in H^2(U), h \in H_{0}^{1}(U), f^{'} \in L^2(0, T; L^2(U))$,
+\end{center}
+then
+\begin{center}
+$u \in L^{\infty}(0, T; H^2(U)), u^{'} \in L^{\infty} (0, T; H_{{0}^{1}(U))},$ \\ 
+$u^{"} \in L^{\infty}(0, T; L^2(U)), u^{"'} \in L^{2}(0, T; H^{-1})$,
+\end{center}
+with the estimate
+\begin{center}
+$ess sup_{0 \leq t \leq T} (||u(t)||_{H^{2}(U)} + ||u^{'}(t)||_{H_{0}^{1}(U)} + ||u^{"}(t)||_{L^{2}(U)}) + ||u^{"'}||_{L^{2}(0, T; H^{-1}(U))} \leq C(||f||_{H^{1}(0, T; L^{2}(U))} + ||g||_{H^{2}(U)} + ||h||_{H^{1}(U)})$ 
+\end{center}
+
+\textbf {Theorem 6 (Higher regularity)} Assume
+\begin{center}
+\{ $g \in H^{m+1}(U), h \in H^m(U)$ \\
+$\{ \frac{d^{k}f}{dt^{k}} \in L^2 (0, T; H^{m-k}(U)) \tab (k = 0,...,m)$
+\end{center}
+Suppose also that the following mth-order compatibility conditions hold:
+\begin{center}
+\{ $g_0 := g \in H_{0}^{1}(U), \tab h_1 := h \in H_{0}^{1}(U)$,..., \\
+\{ $g_{2l} := \frac{d^{2l-2}f}{dt^{2l-2}}(\cdot, 0) - Lg_{2l-2} \in H_{0}^{1}(U)$ \tab (if m = 2l) \\
+\{ $h_{2l+1} := \frac{d^{2l-2}f}{dt^{2l-1}}(\cdot, 0)- Lh_{2l-1} \in H_{0}^{1} (U)$ \tab (if m=2l+1)
+\end{center}
+Then
+\begin{center}
+$\frac{d^{k}u}{dt^{k}} \in L^{\infty}(0, T; H^{m+1-k}(U))$ \tab (k=0,...,m+1),
+\end{center}
+and we have the estimate
+\begin{center}
+$ess sup_{0 \leq t \leq T} \sum_{k=0}^{m+1} ||\frac{d^{k}u}{dt^{k}}||_{H^{m+1-k}(U)} \leq C(\sum_{k=0}^m ||\frac{d^{k}f}{dt^{k}}||_{L^{2}(0, T; H^{m-k}(U))} + ||g||_{H^{m+1}(U)} + ||h||_{H^{m}(U)})$
+\end{center}
+
+\textbf {Theorem 7 (Infinite differentiability)} Assume 
+\begin{center}
+$g, h \in C^{\infty}(\bar{U}), f \in C^{\infty}(\bar{U}_T)$
+\end{center}
+and the mth-order compatibility conditions hold for m=0,1,... \\
+\tab Then the hyperbolic initial/boundary value problem (1) has a unique solution
+\begin{center}
+$u \in C^{\infty}(\bar{U}_T)$
+\end{center}
+
+\textbf {Theorem 8 (Finite propogation speed)} Assume u is a smooth solution of the hyperbolic equation (72). If $u = u_t = 0$ on $K_0$, then u = 0 within K.
+
+\textbf {Chapter 7.3 Hyperbolic systems of first-order equations}
+
+\textbf {Definition} The system of PDE (1) is called hyperbolic if the m x n matrix B(x,t;y) is diagonalizable for each $x, y \in R^n, t \geq 0$
+
+\textbf {Definition} (i) We say (1) is a symmetric hyperbolic system if $B_j(x,t)$ is a symmetric m x m matrix for each $x \in R^n, t \geq 0 (j=1,...,m)$ \\
+\tab (ii) The system (1) is strictly hyperbolic if for each $x, y \in R^n, y \neq 0$ and each $t \geq 0$, the matrix B(x,t;y) has m distinct real eigenvalues.
+\begin{center}
+$\lambda_1(x,t;y) < \lambda_2(x,t;y) < \dots < \lambda_m(x,t;y)$
+\end{center}
+
+\textbf {Definition} We say
+\begin{center}
+$u \in L^2(0, T; H^{1}(R^n; R^m))$, with $u^{'} \in L^2 (0,T;L^2(R^n; R^m))$
+\end{center}
+is a weak solution of the initial-value problem (5) for the symmetric hyperbolic system provided \\
+\tab (i) $(u^{'}, v) + B[u, v;t] = (f,v)$ \\
+for each $v \in H^1(R^n; R^m)$ and a.e. $0 \leq t \leq T$ and \\
+\tab (ii) u(0) = g
+Here and afterwards ( , ) denotes the inner product in $L^2(R^n; R^m)$
+
+\textbf {Theorem 1 (Existence of approximate solutions)} For each $\epsilon > 0$, there exists a unique solution $u^{\epsilon}$ of (11), with
+\begin{center}
+$u^{\epsilon} \in L^2(0, T; H^3(R^n;R^m)), u^{\epsilon '} \in L^2(0, T; H^1(R^n; R^m))$
+\end{center}
+
+\textbf {Theorem 2 (Energy estimates)} There exists a constant C, depending only on n and the coefficients, such that
+\begin{center}
+$max_{0 \leq t \leq T}(||u^{\epsilon}(t)||_{H^{1}(R^n;R^m)} + ||u^{\epsilon '}(t)||_{L^{2}(R^n;R^m)} \leq C(||g||_{H^{1}(R^n;R^m)} + ||f||_{L^{2} (0, T; H^{1}(R^n; R^m))} + ||f^{'}||_{L^{2}(0, T;L^{2}(R^n;R^m))})$
+\end{center}
+for each $0 < \epsilon \leq 1$
+
+\textbf {Theorem 3 (Existence of weak solution)} There exists a weak solution of the initial value problem (5).
+
+\textbf {Theorem 4 (Uniqueness of weak solution)} A weak solution of (5) is unique.
+
+\textbf {Theorem 5 (Existence of solution)} Assume
+\begin{center}
+$g \in H^{s}(R^n; R^m) \tab (s > \frac{n}{2} + m)$
+\end{center}
+Then there is a unique solution $u \in C^1([0, \infty); R^m)$ of the initial value problem (32), (33).
+
+\textbf {Chapter 7.4 Semigroup Theory} \\ Semigroup theory is the abstract study of first-order ordinary differential equations with values in Banach spaces, driven by linear, but possibly unbounded operators. In this section, we outline the basics of the theory and present as well two applicatoins to linear PDE . This approach provides an elegant alternative to some of the existence theory for evolution equations set forth in Ch 7.1-7.3
+
+\textbf {Definitions} Write 
+\begin{center}
+(8) \tab $ D(A) := \{ u \in X | \lim_{t \to 0+} \frac{S(t)u-u}{t}$ exists in X \}
+\end{center}
+and
+\begin{center}
+(9) \tab $Au := \lim_{t \to 0+} \frac{S(t)u-u}{t} (u \in D(A))$
+\end{center}
+We call $A : D(A) \to X$ the (infinitesimal) generator of the semigroup $\{S(t)\}_{t \geq 0}; D(A)$ is the domain of A.
+
+\textbf {Theorem 1 (Differential properties of semigroups)}. Assume $u \in D(A)$. Then \\
+\tab (i) $S(t)u \in D(A)$ for each $t \geq 0$ \\
+\tab (ii) $AS(t)u = S(t)Au$ for each $t \geq 0$ \\
+\tab (iii) The mapping $t \mapsto S(t)u$ is differentiable for each $t > 0$ \\
+\tab (iv) $\frac{d}{dt}S(t)u = AS(t)u \tab (t > 0)$
+
+\textbf {Theorem 2 (Properties of generators)} \\ 
+\tab (i) The domain D(A) is dense in X \\
+and \\
+\tab (ii) A is a closed operator.
+
+\textbf {Definitions} (i) We say a real number $\lambda$ belongs to p(A), the resolvent set of A, provided the operator
+\begin{center}
+$\lambda I - A : D(A) \to X$
+\end{center}
+is one to one and onto \\
+\tab (ii) If $\lambda \in p(A)$, the resolvent operator $R_{\lambda}u := (\lambda I- A)^{-1} u$ 
+
+\textbf {Theorem 3 (Properties of resolvent operators)} \\ 
+\tab (i) If $\lambda, \mu \in p(A)$, we have 
+\begin{center}
+(12) \tab $R_{\lambda} - R_{\mu} = (\mu - \lambda) R_{\lambda} R_{\mu}$ \tab (resolvent identity)
+\end{center}
+and 
+\begin{center}
+(13) \tab $R_{\lambda} R_{\mu} = R_{\mu} R_{\lambda} $
+\end{center}
+\tab (ii) If $\lambda > 0$ then $\lambda \in p(A)$,
+\begin{center}
+(14) \tab $R_{\lambda}u = \int_0^{\infty} e^{-\lambda t} S(t) u dt \tab (u \in X)$
+\end{center}
+and so $||R_{\lambda}|| \leq \frac{1}{\lambda}$ \\
+Thus the resolvent operator is the Laplace transform of the semigroup (cf. Example 8 in ch. 4.3.3).
+
+\textbf {Theorem 4 (Hille-Yoshida Theorem)} Let A be a closed, densely-defined linear operator on X. Then A is the generator of a contraction semigroup $\{ S(t)\}_{t \geq 0}$ if and only if
+\begin{center}
+$(0, \infty) \subset p(A)$ and $||R_{\lambda}|| \leq \frac{1}{\lambda}$ for $\lambda > 0$
+\end{center}
+
+\textbf {Theorem 5 (Second-Order parabolic PDE as semigroups)} The operator A generates a $\gamma$-contraction semigroup $\{S(t)\}_{t \geq 0}$ on $L^2(U)$
+
+\textbf {Theorem 6 (Second-Order hyperbolic PDE as semigroups)} The operator A generates a contraction semigroup $\{S(t)\}_{t \geq 0}$ on $H_0^1(U) x L^2(U)$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

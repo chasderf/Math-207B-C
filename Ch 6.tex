@@ -1,0 +1,500 @@
+\documentclass{article}
+\usepackage{amsmath}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+\title {Math 207C Partial Differential Equations: Ch 6 Second-Order Eliptic Equations}
+
+\author{Charlie Seager}
+
+\maketitle
+
+\textbf {Chapter 6.1 Definitions}
+
+\textbf {Chapter 6.1.1 Elliptic equations} \\ In this chapter we will mostly study the boundary-value problem
+http://users.uoa.gr/~pjioannou/nonlin/Strogatz,
+\begin{center}
+$\{ Lu = f$ \tab in U \\
+$ \{ u = 0$ \tab on $\partial U$
+\end{center}
+where U is an open, bounded subset of $R^n$ and $u: \bar{U} \to R$ is the unknown u = u(x). Here $f: U \to R$ is given and L denotes a second order partial differential operator having either the form
+\begin{center}
+(2) \tab $Lu = - \sum_{i,j=1}^n (a^{ij}(x)u_{x_{i}})_{xj} + \sum_{i=1}^n b^i (x) u_{x_{i}} + c(x) u$
+\end{center}
+or else 
+\begin{center}
+(3) \tab $Lu = - \sum_{i,j=1}^n a^{ij} u_{x_{i}x_{j}} + \sum_{i=1}^n b^i (x) u_{x_{i}} + c(x) u,$
+\end{center}
+for given coefficient functions $a^{ij}, b^i, c(i,j=1,..,n)$. \\
+We say that the PDE Lu = f is in divergence form if L is given by (2) and is in nondivergence form provided by (3). The requirement that u = 0 on $\partial U$ in (1) is sometimes called Dirichlet's boundary condition.
+
+\textbf {Definition} We say the partial differential operator L is (uniformly) elliptic if there exists a constant $\theta > 0$ such that
+\begin{center}
+(4) \tab $\sum_{i,j=1}^n a^{ij}(x) \xi_i \xi_j \geq \theta |\xi|^2$
+\end{center}
+for a.e. $x \in U$ and all $\xi \in R^n$
+
+\textbf {Definitions} (i) The bilinear form B[u,v] associated with the divergence form eliptic operator L defined by (2) is
+\begin{center}
+(8) \tab $B[u,v] := \int_U \sum_{i,j=1}^n a^{ij} u_{x_{i}}, v_{x_{j}} + \sum_{i=1}^n b^i u_{x_{i}} v + cuv dx$
+\end{center}
+for $u, v \in H_0^1 (U)$ \\
+\tab (ii) We say that $u \in H_0^1 (U)$ is a weak solution of the boundary value problem (1) if 
+\begin{center}
+$B[u,v] = (f,v)$
+\end{center}
+for all $v \in H_0^1(U)$ where ( , ) \{the book just leaves the interval blank btw \} denotes the inner product in $L^2(U)$
+
+\textbf {Definition} We say $u \in H_0^1(U)$ is a weak solution of problem (10) provided 
+\begin{center}
+$B[u,v] = \langle f, v \rangle$
+\end{center}
+for all $v \in H_0^1(U)$ where $\langle f, v \rangle = \int_U f^0 v + \sum_{i=1}^n f^i v_{x_{i}} dx$ and $\langle , \rangle$ is the pairing of $H^{-1}(U)$ and $H_0^1(U)$
+
+\textbf {Chapter 6.2 Existence of Weak Solutions} 
+
+\textbf {6.2.1 Lax-Milgram Theorem} \\ We now introduce a fairly simple abstract principle from linear functional analysis, which will later in 6.2.2 provide in certain circumstances the existence and uniqueness of a weak solution to our boundary value problem.
+
+\textbf {Theorem 1 (Lax-Milgram Theorem)} Assume that
+\begin{center}
+$B : H x H \to R$
+\end{center}
+is a bilinear mapping, for which there exists constants $\alpha, \beta > 0$ such that
+\begin{center}
+$|B[u,v]| \leq \alpha ||u|| ||v|| \tab (u,v \in H)$
+\end{center}
+and 
+\begin{center}
+$\beta ||u||^2 \leq B[u,u] \tab (u \in H)$
+\end{center}
+Finally, let $f: H \to R$ be a bounded linear functional on H. \\
+\tab Then there exists a unique element $u \in H$ such that
+\begin{center}
+(1) \tab $B[u,v] = \langle f, v \rangle$
+\end{center}
+for all $v \in H$
+
+\textbf {Theorem 2 (Energy estimates)} There exist constants $\alpha, \beta > 0$ and $\gamma \geq 0$ such taht
+\begin{center}
+$|B[u,v]| \leq \alpha ||u||_{H_{0}^{1}(U)}||v||_{H_{0}^{1}(U)}$
+\end{center}
+and 
+\begin{center}
+$\beta ||u||^{2}_{H_{0}^{1}(U)} \leq B[u,u] + \gamma ||u||^{2}_{L^{2}(U)}$
+\end{center}
+for all $u, v \in H_{0}^{1}(U)$
+
+\textbf {Theorem 3 (First Existence Theorem for weak solutions)} There is a number $\gamma \geq 0$ such that for each
+\begin{center}
+(7) \tab $\mu \geq \gamma$
+\end{center}
+and each function
+\begin{center}
+$f \in L^2(U)$
+\end{center}
+there exists a unique weak solution $u \in H_0^1(U)$ of the boundary-value problem
+\begin{center}
+(8) \tab \{ $Lu + \mu u = f$ \tab in U \\
+\tab \{ u = 0 \tab on $\partial U$
+\end{center}
+
+\textbf {Definitions} (i) The operator L*, the formal adjoint of L, is 
+\begin{center}
+$L*v := - \sum_{i,j = 1}^n (a^{ij}v_{x_{j}{x_{i}}} - \sum_{i=1}^n b^1 v_{x_{i}} + (c - \sum_{i=1}^n b^i_{x_{i}})v$,
+\end{center}
+provided $b^i \in C^1 (\bar{U}) (i=1,...,n)$ \\
+\tab (ii) The adjoint bilinear form
+\begin{center}
+$B* : H_0^1(U) x H_0^1(U) \to R$
+\end{center}
+is defined by 
+\begin{center}
+$B*[v,u] := B[u,v]$
+\end{center}
+for all $u, v \in H_0^1 (U)$ \\
+\tab (iii) We say that $v \in H_0^1(U)$ is a weak solution of the adjoint problem
+\begin{center}
+$\{L*v = f$ \tab U \\
+\{ v = 0 \tab on $\partial U$
+\end{center}
+provided
+\begin{center}
+$B*[v,u] = (f,u)$
+\end{center}
+for all $u \in H_0^1(U)$
+
+\textbf {Theorem 4 (Second Existence Theorem for weak solutions)} \\ \tab (i) Precisely one of the following statements holds either:
+\begin{center}
+($\alpha)$ \tab \{for each $f \in L^2(U)$ there exists a unique weak solution u of the boundary-value problem
+
+(10) \tab \{ \{Lu = f \tab in U \\
+(10) \tab \{ \{u = 0 \tab on $\partial U$
+\end{center}
+\tab or else 
+\begin{center}
+($\beta$) \tab \{ there exists a weak solution $u \neq 0$ of the homogeneous problem \\
+\tab (11) \tab \{ Lu = 0 \tab in U \\
+\tab (11) \tab \{ u = 0 \tab on $\partial U$
+\end{center}
+\tab (ii) futhermore, should assertion ($\beta$) hold, the dimention of the subspace $N \subset H_0^1(U)$ of weak solutions of (11) is finite and equals the dimensions of the subspace $N* \subset H_0^1(U)$ of weak solutions of 
+\begin{center}
+(12) \tab \{ L*v = 0 \tab in U \\
+\tab \{ v = 0 \tab on $\partial U$
+\end{center}
+Finally, the boundary-value problem (10) has a weak solution if and only if
+\begin{center}
+$(f,v) = 0$ \tab for all $v \in N*$
+\end{center}
+The dichotomy $(\alpha), (\beta)$ is the Fredholm alternative.
+
+\textbf {Theorem 5 (Third Existence THeorem for weak solutions) } \\
+\tab (i) There exists an at most countable set $\sum \subset R$ such that the boundary-value problem 
+\begin{center}
+(24) \tab \{ Lu = $\lambda u + f$ \tab in U \\
+(24) \tab \{ u = 0 \tab on $\partial U$
+\end{center}
+has a unique weak solution for each $f \in L^2(U)$ if and only if $\lambda \notin \sum$ \\ (ii) If $\sum$ is infinite, then $\sum = \{\lambda_k\}_{k=1}^{\infty}$, the values of a nondecreasing sequence with 
+\begin{center}
+$\lambda_k \to + \infty$
+\end{center}
+
+\textbf {Definition} We call $\sum$ the (real) spectrum of the operator L.
+
+\textbf {Theorem 6 (Boundedness of the inverse)} If $\lambda \notin \sum$, there exists a constant C such that 
+\begin{center}
+(29) \tab $||u||_{L^{2}(U)} \leq C||f||_{L^{2}(U)}$,
+\end{center}
+whenever $f \in L^2(U)$ and $u \in H_0^{1}(U)$ is the unique weak solution of
+\begin{center}
+\{ Lu = $\lambda u + f$ \tab in U \\
+\{ u = 0 \tab on $\partial U$
+\end{center}
+The constant C depends only on $\lambda, U$ and the coefficients of L. \\
+This constant will blow up if $\lambda$ approaches an eigenvalue .
+
+
+\textbf {Chapter 6.3 Regularity}
+
+\textbf {Theorem 1 (Interior $H^2$-regularity)} Assume \begin{center}
+$a^{ij} \in C^1 (U), b^i, c \in L^{\infty} (U) \tab  (i, j = 1,..., n)$
+\end{center}
+and 
+\begin{center}
+$f \in L^2 (U)$
+\end{center}
+Suppose furthermore that $u \in H^1 (U)$ is a weak solution of the elliptic PDE
+\begin{center}
+Lu = f \tab in U
+\end{center}
+Then
+\begin{center}
+$u \in H_{loc}^2 (U)$;
+\end{center}
+and for each open subset $V \subset \subset U$ we have the estimate 
+\begin{center}
+$||u||_{H^{2}(V)} \leq C(||f||_{L^{2}(U)} + ||u||_{L^{2}(U)})$.
+\end{center}
+the constant C depending only on V, U and the coefficients of L.
+
+\textbf {Theorem 2 (Higher Interior regularity)} Let m be a nonnegative integer, and assume 
+\begin{center}
+$a^{ij}. b^{i}, c \in C^{m+1}(U) \tab (i, j = 1,...,n)$
+\end{center}
+and 
+\begin{center}
+$ f \in H^{m}(U)$
+\end{center}
+Suppose $u \in H^1(U)$ is a weka solution of the elliptic PDE
+\begin{center}
+Lu = f \tab in U
+\end{center}
+Then 
+\begin{center}
+$u \in H_{loc}^{m+2}(U)$
+\end{center}
+and for each $V \subset \subset U$ we have the estimate
+\begin{center}
+(28) \tab $||u||_{H^{m+2}(V)} \leq C(||f||_{H^{m}(U)} + ||u||_{L^{2}(U)})$
+\end{center}
+the constanc C depending only on m, U, V and the coefficients of L.
+
+\textbf {Theorem 3 (Infinite differentiability in the interior)} Assume 
+\begin{center}
+$a^{ij}, b^i, c \in C^{\infty} (U) \tab (i,j = 1,...,n)$
+\end{center}
+and 
+\begin{center}
+$f \in C^{\infty}(U)$
+\end{center}
+Suppose $u \in H^1(U)$ is a weak solution of the elliptic PDE
+\begin{center}
+Lu = f \tab in U
+\end{center}
+Then 
+\begin{center}
+$u \in C^{\infty}(U)$
+\end{center}
+
+\textbf {Theorem 4 (Boundary $H^2$-regularity)} Assume 
+\begin{center}
+$a^{ij} \in C^1(\bar{U}), b^i, c \in L^{\infty}(U) \tab (i,j =1,...,n)$
+\end{center}
+and 
+\begin{center}
+$f \in L^2(U)$
+\end{center}
+Suppose that $u \in H_0^1(U)$ is a weak solution of the elliptic boundary-value problem
+\begin{center}
+(40) \tab \{ Lu = f \tab in U \\
+(40) \tab \{ u = 0 \tab $\partial U$
+\end{center}
+Assume finally
+\begin{center}
+(41) \tab $\partial U$ is $C^2$
+\end{center}
+Then
+\begin{center}
+$u \in H^2(U)$ 
+\end{center}
+and we have the estimate
+\begin{center}
+$(42) \tab ||u||_{H^{2}(U)} \leq C(||f||_{L^{2}(U)} + ||u||_{L^{2}(U)})$
+\end{center}
+the constant C depending only on U and the coefficients of L.
+
+\textbf {Theorem 5 (Higher boundary regularity)} Let m be a nonnegative integer, and assume 
+\begin{center}
+(72) \tab $a^{ij}, b^i, c \in C^{m+1}(\hat{U}) \tab (i, j = 1,...,n)$
+\end{center}
+and 
+\begin{center}
+(73) \tab $f \in H^m(U)$
+\end{center}
+Suppose that $u \in H_0^1(U)$ is a weak solution of the boundary-value problem
+\begin{center}
+(74) \tab \{ Lu = f \tab in U \\
+\tab \{ u = 0 \tab on $\partial U$
+\end{center}
+Assume finally
+\begin{center}
+(75) \tab $\partial U$ is $C^{m+2}$
+\end{center}
+Then 
+\begin{center}
+(76) \tab $u \in H^{m+2}(U)$
+\end{center}
+and we have the estimate
+\begin{center}
+(77) \tab $||u||_{H^{m+2}(U)} \leq C(||f||_{H^{m}(U)} + ||u||_{L^{2}(U)}$
+\end{center}
+the constant C depending only on m, U and the coefficients of L.
+
+\textbf {Theorem 6 (Infinite differentiability up to the boundary)} Assume 
+\begin{center}
+$a^{ij}, b^i, c \in C^{\infty}(\bar{U}) \tab (i, j = 1,...,n)$
+\end{center}
+and 
+\begin{center}
+$f \in C^{\infty}(\bar{U})$
+\end{center}
+Suppose $u \in H_0^1(U)$ is a weak solution of the boundary-value problem
+\begin{center}
+$\{Lu = f \tab$ in U \\
+\{ u = 0 \tab on $\partial U$
+\end{center}
+Assume also that $\partial U$ is $C^{\infty}$. Then
+\begin{center}
+$ u \in C^{\infty}(\bar{U})$
+\end{center}
+
+\textbf {Chapter 6.4 Maximum principles}
+
+\textbf {Theorem 1 (Weak maximum principle)} Assume $u \in C^{2}(U) \cap C(\bar{U})$ and 
+\begin{center}
+c = 0 \tab in U
+\end{center}
+\tab (i) If 
+\begin{center}
+$Lu \leq 0$ \tab in U
+\end{center}
+then 
+\begin{center}
+$max_{\bar{U}}u = max_{\partial U} u$
+\end{center}
+\tab (ii) If 
+\begin{center}
+$Lu \geq 0$ \tab in U
+\end{center}
+then
+\begin{center}
+$min_{\bar{U}} u = min_{\partial U} u$
+\end{center}
+
+\textbf {Theorem 2 (Weak maximum principle for $c \geq 0$)} Assume $u \in C^2(U) \cap C(\bar{U})$ and 
+\begin{center}
+$c \geq 0$ \tab in U
+\end{center}
+\tab (i) If
+\begin{center}
+$Lu \leq 0$ \tab in U
+\end{center}
+\tab then
+\begin{center}
+(11) \tab $max_{\bar{U}} u \leq max_{\partial U} u^+$.
+\end{center}
+\tab (ii) Likewise, if
+\begin{center}
+$Lu \geq 0 \in U$
+\end{center}
+then
+\begin{center}
+(12) \tab $min_{\bar{U}} u \geq - max_{\partial U} u^-$.
+\end{center}
+
+\textbf {Lemma (Hopf's Lemma)} Assume $u \in C^2(U) \cap C^1 (\bar{U})$ and 
+\begin{center}
+c = 0 \tab in U
+\end{center}
+Suppose further
+\begin{center}
+$Lu \leq 0$ \tab in U
+\end{center}
+and there exists a point $x^0 \in \partial U$ such that
+\begin{center}
+(14) \tab $u (x^0) > u(x)$ \tab for all $x \in U$
+\end{center}
+Assume finally that U satisfies the interior ball condition at $x^0$; that is, there exists an open ball $B \subset U$ with $x^0 \in \partial B$ \\
+\tab (i) Then
+\begin{center}
+$\frac{\partial u}{\partial v} (x^0) > 0$
+\end{center}
+where v is the outer unit normal to B at $x^0$ \\
+\tab (ii) If
+\begin{center}
+$c \geq 0$ \tab in U
+\end{center}
+the same conclusion holds provided 
+\begin{center}
+$u(x^0) \geq 0$
+\end{center}
+
+\textbf {Theorem 3 (Strong maximum principle)} Assume $u \in C^2(U) \cap C(\bar{U})$ and 
+\begin{center}
+c = 0 \tab in U
+\end{center}
+Suppose also U is connected, open and bounded \\
+\tab (i) If
+\begin{center}
+$Lu \leq 0$ \tab in U
+\end{center}
+and u attains its maximum over $\bar{U}$ at an interior point, then
+\begin{center}
+u is constant within U
+\end{center}
+\tab (ii) Similarly, if
+\begin{center}
+$Lu \geq 0$ \tab in U
+\end{center}
+and u attains its minimum over $\bar{U}$ at an interior point, then
+\begin{center}
+u is constant within U.
+\end{center}
+
+\textbf {Theorem 4 (Strong maximum principle with $c \geq 0$)} Assume $u \in C^2(U) \cap C(\bar{U})$ and
+\begin{center}
+$c \geq 0$ \tab in U
+\end{center}
+Suppose also U is connected \\
+\tab (i) If
+\begin{center}
+$Lu \leq 0$ \tab in U
+\end{center}
+and u attains a nonnegative maximum over $\bar{U}$ at an interior point, then
+\begin{center}
+u is constant within U
+\end{center}
+\tab (ii) SImilarly, if
+\begin{center}
+$Lu \geq 0$ \tab in U
+\end{center}
+and u attains a nonpositive minimum over $\bar{U}$ at an interior point, then
+\begin{center}
+u is constant within U
+\end{center}
+
+\textbf {Theorem 5 (Harnack's inequality)} Assume $u \geq 0$ is a $C^2$ solution of 
+\begin{center}
+Lu = 0 \tab in U
+\end{center}
+and suppose $V \subset \subset U$ is connected. Then there exists a constant C suhc that
+\begin{center}
+(18) \tab $sup_{V} u \leq C inf_{V} u$
+\end{center}
+The constant C depends only on V and the coefficients of L
+
+\textbf {Chapter 6.5 Eignevalues and Eigenfunctions}
+
+\textbf {Theorem 1 (Eigenvalues of symmetric elliptic operators)} \\ \tab (i) Each eigenvalue of L is real \\
+\tab (ii) Furthermore, if we repeat each eigenvalue according to its (fintie) multiplicity, we have
+\begin{center}
+$\sum = \{\lambda_{k}\}_{k=1}^{\infty}$
+\end{center}
+where
+\begin{center}
+$0 < \lambda_{1} \leq \lambda_{2} \leq \lambda_{3} \leq \dots$
+\end{center}
+and 
+\begin{center}
+$\lambda_{k} \to \infty$ \tab as $k \to \infty$
+\end{center}
+\tab (iii) Finally, there exists an orthonormal basis $\{w_{k}\}_{k=1}^{\infty}$ of $L^2(U)$, where $w_{k} \in H_0^1(U)$ is an eigenfunction corresponding to $\lambda_{k}$
+\begin{center}
+(4) \tab \{ $Lw_{k} = \lambda_{k} w_{k}$ \tab in U \\
+(4) \tab \{$w_k = 0$ \tab on $\partial U$
+\end{center}
+for k = 1,2,...
+
+\textbf {Definition} We call $\lambda_1 > 0$ the principal eigenvalue of L.
+
+\textbf {Theorem 2 (Variational principle for the principal eigenvalue)} \\ \tab (i) We have
+\begin{center}
+(5) \tab $\lambda_1 = min\{B[u,u] | u \in H_0^1 (U), ||u||_{L^{2}} = 1\}$
+\end{center}
+\tab (ii) Furthermore, the above minimum is attained for a function $w_1$, positive within U, which solves
+\begin{center}
+$\{ Lw_1 = \lambda_1 w_1$ \tab in U \\
+\{ $w_1 = 0$ \tab on $\partial U$
+\end{center}
+\tab (iii) Finally, if $u \in H_0^1(U)$ is any weak solution of 
+\begin{center}
+$\{ Lu = \lambda_1 u$ \tab in U \\
+\{ u = 0 \tab on $\partial U$
+\end{center}
+then u is a multiple of $w_1$
+
+\textbf {Theorem 3 (Principle eigenvalue for nonsymmetric elliptic operators)} \\ \tab
+(i) There exists a real eigenvalue $\lambda_1$ for the operators L, taken with zero boundary conditions, such that if $\lambda \in \mathcal{C}$ is any other eigenvalue, we have
+\begin{center}
+$Re(\lambda) \geq \lambda_1$
+\end{center}
+\tab (ii) There exists a corresponding eigenfunction $w_1$, which is positive within U \\
+\tab (iii) The eignevalue $\lambda_1$ is simple; that is, if u is any solution of (1), then u is a multiple of $w_1$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

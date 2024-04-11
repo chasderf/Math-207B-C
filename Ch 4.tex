@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathrsfs}  
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+
+\title {Math 207B Partial Differential Equations: Ch 4 Techniques for Solving important examples: Other ways to represent solutions}
+
+\author{Charlie Seager}
+
+\maketitle
+
+\textbf {Turing instability}
+
+\textbf {Chapter 4.2 Similarity Solutions} \\
+When investigating partial differential equations, it is often profitable to
+look for specific solutions u, the form of which reflects various symmetries
+in the structure of the PDE. We have already seen this idea in our derivation
+of the fundamental solutions for Laplace's equation and the heat equation
+in §2.2.1 and §2.3.1 and our discovery of rarefaction waves for conservation
+laws in §3.4.4. Following are some further applications of this important
+method.
+
+\textbf {Chapter 4.3 Tranformation Methods} \\
+In this section we develop some of the theory for the Fourier transform $\mathcal{F}$ , the Radon transform $\mathcal{R}$ and the Laplace transform $\mathcal{L}$. These provide extremely powerful tools for converting certain linear partial differential equations intoeither algebraic equations or else differential equations involving fewer
+variables.
+
+\textbf {Chapter 4.3.1 Fourier Transform} In this section all functions are complex-valued, and - denotes the complex conjugate
+
+\textbf {Definition} If $u \in L^1 (R^n)$, we define its Fourier transform $\mathcal{F} u = \hat{u}$ by 
+\begin{center}
+$\hat{u}(y) := \frac{1}{(2\pi)^{n/2}} \int_{R^n} e^{-ixy}u(x) dx \tab (y \in R^n)$
+\end{center}
+and its inverse Fourier tranform $\mathcal{F}^{-1} u = \hat{u}$ by 
+\begin{center}
+$\widehat{u}(y) := \frac{1}{(2\pi)^{n/2}} \int_{R^n} e^{ixy} u(x) dx \tab (y \in R^n)$
+\end{center}
+
+\textbf {THeorem 1 (Plancherel's THeorem)}. Assume $u \in L^1 (R^n) \cap L^2(R^n)$. Then $\hat{u}, \widehat{u} \in L^2(R^n)$ and
+\begin{center}
+$||\hat{u}||_{L^2(R^n)} = ||\widehat{u}||_{L^2(R^n)} = ||u||_{L^2(R^n)}$
+\end{center}
+
+\textbf {Theorem 2 (Properties of Fourier Transform)} Assume $u, v \in L^2(R^n)$. Then \\
+\tab (i) $\int_{R^n} u, \hat{v}dx = \int_{R^n}, \hat{u}, \bar{\hat{v}} dy$ \\
+\tab (ii) $(D^{\alpha}u)\hat{} = (iy)^{\alpha} \hat{u}$ \tab for each multiindex $\alpha$ such that $D^{\alpha}u \in L^2 (R^n)$. \\
+\tab (iii) If $u, v \in L^1(R^n) \cap L^2(R^n)$, then $(u * v)\hat{} = (2\pi)^{n/2}\hat{u}\hat{v}$ \\
+\tab (iv) Furthermore, $u = (\hat{u})\widehat{}$.
+Assertion (iv) is the Fourier inversion formula which represents a function u in terms of the exponential plane waves $e^{ixy}$, provided $\hat{u} \in L^1(R^n)$
+\begin{center}
+$u(x) = \frac{1}{(2\pi)^{n/2}} \int_{R^n} e^{ixy} \hat{u} (y) dy$
+\end{center}
+
+\textbf {Definition} The Radon tranform $\mathcal{R}u = \tilde{u}$ of a function $u \in C_c^{\infty}(R^n)$ is 
+\begin{center}
+$\tilde{u}(x, \omega) := \int{\prod (s, \omega)} udS \tab (s \in R, \omega \in S^{n-1})$
+\end{center}
+The term on the right is the integral over the plane $\prod (s \omega)$ with respect to (n-1)-dimensional surface measure
+
+\textbf {Theorem 3 (Properties of Radon tranform)} Assume $u \in C_c^{\infty}(R^n)$ Then  \\
+\tab (i) $\tilde{u}(-s, -\omega) = \tilde{u}(s, \omega)$ \\
+\tab (ii) $(D^{\alpha}u)^{\tilde{}} = \omega^{\alpha} \frac{\partial^{|\alpha|}}{\partial s^{|\alpha|}} \tilde{u}$ for each multiindex $\alpha$ \\
+\tab (iii) $(\triangle u)^{\tilde{}} = \omega^{\alpha} \frac{\partial^2}{\partial s^2} \tilde{u}$ \\
+\tab If u = 0 in $R^n - B(0, \mathcal{R})$, then $\tilde{u}(s, \omega) = 0$ for $|s| \geq \mathcal{R}$
+
+\textbf {Theorem 4 (Radon and Fourier tranforms)} Assume that $u \in C_c^\infty (R^n)$. Then 
+\begin{center}
+$\bar{u}(r, \omega) := \int_R \tilde{u}(s, \omega)e^{-irs}ds = (2\pi)^{n/2} \hat{u}(r\omega) \tab (r \in R, \omega \in S^{n-1})$
+\end{center}
+where $\hat{u} = \mathcal{F}u$ is the Fourier tranform.
+
+\textbf {Theorem 5 (Inverting the Radon tranform)} \\ \tab (i) We have 
+\begin{center}
+$u(x) = \frac{1}{2(2\pi)^n} \int_R \int_{S^{n-1}} \bar{u}(r, \omega)r^{n-1} e^{ir\omega \cdot x} dSdr$
+\end{center}
+the function $\bar{u}$ defined by (31) \\
+\tab (ii) If n = 2k + 1 is odd, then 
+\begin{center}
+$u(x) = \int_{S^{n-1}} r(x \cdot \omega, \omega) dS$
+\end{center}
+for 
+\begin{center}
+$r(s, \omega) := \frac{(-1)^k }{2(2\pi)^{2k}}\frac{\partial^{2k}}{\partial s^{2k}} \tilde{u}(s, \omega)$.
+\end{center}
+Formulas (33) and (34) provide an elegant and useful decommpositions of u into plane waves.
+
+\textbf {Definition} If $u \in L^1(R_+)$, we define its Laplace tranform $\mathcal{L}u = u \#$ to be 
+\begin{center}
+$u \#(s) := \int_0^\infty e^{-st} u(t) dt \tab (s \geq 0)$
+\end{center}
+
+\textbf {Chapter 4.4 Converting Nonlinear into Linear PDE}
+
+\textbf {Chapter 4.5 Asymptotics}
+
+\textbf {Chapter 4.6 Power Series}
+
+\textbf {Definition} We say the surface $\Gamma$ is noncharacteristic for the partial differential equation (1) provided
+\begin{center}
+$\sum_{|\alpha|=k} a_{\alpha}\nu^{\alpha} \neq 0$ \tab on $\Gamma$
+\end{center}
+for all values of the arguments of the coefficients $a_{\alpha} (|\alpha| = k )$
+
+\textbf {Theorem 1 (Cauchy data and Noncharacteristic surfaces)} Assume that $\Gamma$ is noncharacteristic for the PDE (1). Then if u is a smooth solution of (1) and u satisfies the Cauchy conditions (2), we can uniquely compute all the partial differential equations of u along $\Gamma$ in terms of $\Gamma$, the function $g_0, ...,g_{k-1}$ and the coefficients $a_{\alpha} (|\alpha| = k), a_0$
+
+\textbf {Definition} A function $f: R^n \to R$ is called (real) analytic near $x_0$ if there exist $r > 0$ and constants $\{f_{\alpha}\}$ such that 
+\begin{center}
+$f(x) \sum_{\alpha} f_{\alpha} (x-x_0)^{\alpha} \tab (|x-x_0| < r)$,
+\end{center}
+the sum taken over all multiindex $\alpha$
+
+\textbf {Definition} Let 
+\begin{center}
+$f = \sum_{\alpha} f_{\alpha} x^{\alpha}, g = \sum_{\alpha} g_{\alpha}x^{\alpha}$
+\end{center}
+be two power series. We say g majorizes f, written
+\begin{center}
+$g >> f$
+\end{center}
+provided 
+\begin{center}
+$g_{\alpha} \leq |f_{\alpha}$ \tab for all multiindices $\alpha$
+\end{center}
+
+\textbf {Theorem 2 (Cauchy-Kovalevskaya Theorem)} Assume $\{B_j\}_{j=1}^{n-1}$ and c are real analytics functions. Then there exist $r > 0$ and a real analytic function
+\begin{center}
+$u = \sum_{\alpha}u_{\alpha}x^{\alpha}$
+\end{center}
+solving the boundary-value problem (15)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

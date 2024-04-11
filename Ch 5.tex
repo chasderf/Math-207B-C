@@ -1,0 +1,468 @@
+\documentclass{article}
+\usepackage{amsmath}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+
+\title {Math 207C Partial Differential Equations: Part II THEORY FOR LINEAR PARTIAL DIFFERENTIAL EQUATIONS: Ch 5: Sobelev Spaces}
+
+\author{Charlie Seager}
+
+\maketitle
+
+\textbf {Ch 5: Sovelev Spaces}
+
+\textbf{Ch 5.1 Holder Spaces} Before turning to Sobelev spaces, we first discuss the simpler Holder spaces.
+
+\textbf {Definitions} (i) If $u: U \to R$ is bounded and continuous, we write
+\begin{center}
+$||u||_{C(\bar{U})} := sup_{x \in U} |u(x)|$
+\end{center}
+(ii) The $\gamma^{th}$-Holder seminorm of $u: U \to R$ is 
+\begin{center}
+$||u||_{C^{0,\gamma} (\hat{U})}:= sup_{{x, y \in U}_{x \neq y}} \{ \frac{{|u(x)| - u(y)|}{|x-y|^{\gamma}}} \}$
+\end{center}
+and the $\gamma^{th}$-Holder norm is
+\begin{center}
+$||u||_{C^{0,\gamma}(\bar{U})} := ||u||_{C(\bar{U})} + [u]_{C^{0, \gamma}(\bar{U})}$
+\end{center}
+
+\textbf {Definition} The Holder space
+\begin{center}
+$C^{k, \gamma}(\bar{U})$
+\end{center}
+consists of all functions $u \in C^{k}(\bar{U})$ for which the norm
+\begin{center}
+$||u||_{C^{k, \gamma}(\bar{U})} := \sum_{|\alpha| \leq k} ||D^{\alpha}u||_{C(\bar{U})} + \sum_{|\alpha| = k} [D^{\alpha}u]_{C^{0, \gamma}(\bar{U})}$
+\end{center}
+is finite. \\
+So the space $C^{k, \gamma}(\bar{U})$ consists of those functions u that are k-times continuously differentiable and whose kth partial derivatives are bounded and Holder continuous with exponent $\gamma$. Such functions are well-behaved, and furthermore the spce $C^{k, \gamma} (\bar{U})$ itself posesses a good mathematical structure.
+
+\textbf {Theorem 1 (Holder spaces as function spaces)} The space of functions $C^{k, \gamma}(\bar{U})$ is a Banarch space.
+
+\textbf {Chapter 5.2 Sobelev Spaces} The Holder spaces introduced in 5.1 are unfortunately not often suitable settings for elementary PDE theory, as we usually cannot make good enough analytic estimates to demonstrate that the solutions we construct actually belong to such spaces. What are needed are some other kinds of spaces, containing less smooth functions. In practice we must strike a balance by designing spaces comprising functions which have some, but not too great, smoothness properties.
+
+\textbf {Definition} Suppose $u, v \in L^{1}_{loc} (U)$ and $\alpha$ is a multiindex. We say that v is the $\alpha^{th}$-weak partial derivative of u, written
+\begin{center}
+$D^{\alpha}u = v$
+\end{center}
+provided
+\begin{center}
+$\int_U uD^{\alpha} \phi dx = (-1)^{|\alpha|} \int_U v \phi dx$
+\end{center}
+for all test functions $\phi \in C_c^{\infty} (U)$
+
+\textbf {Lemma (Uniqueness of weak Derivatives)} A weak $\alpha^{th}$-partial derivative of u, if it exists, is uniquely defined up to a set of measure zero.
+
+\textbf {Definition} The Sobelev space
+\begin{center}
+$W^{k,p} \{U\}$
+\end{center}
+consists of all locally summable functions $u: U \to R$ such that for each miltiindex $\alpha$ with $|\alpha| \leq k, D^{\alpha} u$ exists in the weak sense and belongs to $L^{p}(U)$
+
+\textbf {Definitions} If $u \in W^{k, p} (U)$ we define its norm to be 
+\begin{center}
+$||u||_{W^{k,p}(U)} := \{ (\sum_{|\alpha| \leq k} \int_U |D^{\alpha} u |^p dx)^{1/p} \tab (1 \leq p < \infty)$ \\
+$ \tab := \{ \sum_{|\alpha| \leq k} ess sup_U |D^{\alpha} u| \tab (p = \infty)$
+\end{center}
+
+\textbf {Definitions} (i) Let $\{u_m\}_{m=1}^\infty u \in W^{k,p} (U)$ We say $u_m$ converges to u in $W^{k,p}(U)$, written
+\begin{center}
+$u_m \to u$ \tab in $W^{k,p}(U)$
+\end{center}
+provided
+\begin{center}
+$\lim_{m \to \infty} ||u_m - u||_{w^{k,p}(U)} = 0$
+\end{center}
+We write
+\begin{center}
+$u_m \to u$ \tab in $W_{loc}^{k,p}(U)$
+\end{center}
+to mean
+\begin{center}
+$u_m \to u$ \tab in $W^{k,p}(V)$
+\end{center}
+for each $V \subset \subset U$
+
+\textbf {Definition} We denote
+\begin{center}
+$U_0^{k,p}(U)$
+\end{center}
+the closure of $C_c^{\infty}(U)$ in $W^{k,p}(U)$
+
+\textbf {{Theorem 1 (Properties of weak derivatives)}}
+ Assume $u, v \in W^{k,p}(U), |\alpha| \leq k$. Then \\
+\tab (i) $D^\alpha u \in W^{k-|\alpha|,p}(U)$ with $|\alpha + |\beta| \leq k$ \\
+(ii) For each $\lambda, \mu \in R, \lambda u + \mu u \in W^{k,p}(U)$ and $D^{\alpha} ( \lambda u + \mu v) = \lambda D^{\alpha} u + \mu D^{\alpha} v, |\alpha| \leq k$ \\
+(iii) If V is an open subset of U, then $u \in W^{k,p}(V)$ \\
+(iv) If $\xi \in C_c^\infty (U)$, then $\xi u \in W^{k,p} (U)$ and
+\begin{center}
+$D^{\alpha} ( \xi u) = \sum_{\beta \leq \alpha} (_\beta^\alpha) D^{\beta}  \xi D^{\alpha - \beta} u$ (Leibniz's formula)
+\end{center}
+where $(^\alpha_\beta)$ = $\frac{\alpha !}{\beta ! (\alpha - \beta)!}.$
+
+\textbf {Theorem 2 (Sobelev spaces as function spaces)}. For each k = 1 ,... and $1 \leq p \leq \infty$, the Sobelev space $W^{k,p}(U)$ is a Banarch space.
+
+\textbf {Chapter 5.3 Approximation}
+
+\textbf {Theorem 1 (Local approximation by smooth functions)} Assume $u \in W^{k,p}(U)$ for some $1 \leq p < \infty$, and set
+\begin{center}
+$u^{\epsilon} = \mathcal{n}_\epsilon * u$ \tab in $U_{\epsilon}$
+\end{center}
+Then \\
+\tab (i) $u^\epsilon \in C^{\infty}(U_{\epsilon})$ \tab for each $\epsilon > 0$ \\
+and \\
+\tab (ii) $u^{\epsilon} \to u$ \tab in $W^{k,p}_{loc} (U)$, as $\epsilon \to 0$
+
+\textbf {Theorem 2 (Global approximation by smooth functions)} Assume U is bounded, and suppose as well that $u \in W^{k,p}(U)$ for some $1 \leq p < \infty$. Then there exist functions $u_m \in C^{\infty} (U) \cap W^{k,p} (U)$ such that 
+ \begin{center}
+$u_m \to u$ \tab in $W^{k,p}(U)$
+\end{center}
+
+\textbf {Theorem 3 (Global approximation by functions smooth up to the boundary)} Assume U is bounded and $\partial U$ is $C^1$. Suppose $u \in W^{k,p}(U)$ for some $1 \leq p < \infty$. Then there exist functions $u_m \in C^{\infty} (\bar{U})$ such that
+ \begin{center}
+$u_m \to u$ \tab in $W^{k,p} (U)$
+\end{center}
+
+\textbf {Chapter 5.4 Extensions}
+
+\textbf {Theorem 1 (Extension Theorem)} Assume U is bounded and $\partial U$ is $C^1$. Select a bounded open set V such that $U \subset \subset V$. Then there exists a bounded linear operator
+ \begin{center}
+$E: W^{1,p} (U) \to W^{1,p} (R^n)$
+\end{center}
+such that for each $u \in W^{1, p} (U)$: \\
+\tab (i) Eu = u a.e. in U \\
+\tab (ii) Eu has support within V , \\
+and \\
+\tab (iii)
+ \begin{center}
+$||Eu||_{W^{1,p}(R^n)} \leq C||u||_{W^{1,p}(U)}$
+\end{center}
+the constant C depending only on p, U, and V.
+
+\textbf {Definition} We call Eu an extension of u to $R^n$.
+
+\textbf {Chapter 5.5 Traces}
+
+\textbf {Theorem 1 (Trace Theorem)} Assume U is bounded and $\partial U$ is $C^1$. Then there exists a bounded linear operator
+ \begin{center}
+$T : W^{1,p}(U) \to L^p(\partial U)$
+\end{center}
+such that \\
+\tab (i) $Tu = u|_{\partial U}$ if $u \in W^{1,p}(U) \cap C(\bar{U})$ \\
+and \\
+\tab (ii) $||Tu||_{L^{p}(\partial U)} \leq C ||u||_{W^{1,p}(U)}$ \\
+for each $u \in W^{1,p}(U)$ with the constant C depending only on p and U.
+
+\textbf {Definition} We call Tu the trace of u on $\partial U$
+
+\textbf {Theorem 2 (Trace-zero functions in $W^{1,p}$)} Assume U is bounded and $\partial U$ is $C^1$. Suppose furthermore that $u \in W^{1,p}(U)$. Then
+ \begin{center}
+$u \in W_0^{1,p}(U)$ if and only if $Tu = 0$ on $\partial U$
+\end{center}
+
+\textbf {Chapter 5.6 Sobolev Inequalities}
+
+\textbf {Definition} if $1 \leq p < n$ the Sobolev conjugate of p is 
+ \begin{center}
+$p* := \frac{np}{n-p}$
+\end{center}
+Note that 
+ \begin{center}
+$\frac{1}{p*}=\frac{1}{p} - \frac{1}{n}, \tab p* > p$
+\end{center}
+
+\textbf {Theorem 1 (Gagliardo-Nirenberg-Sobolev inequality)} Assume $1 \leq p < n$. There exists a constant C, depending only on p and n, such that
+ \begin{center}
+$||u||_{L^{p*}(R^n)} \leq C||D_u||_{L^{p}(R^n)}$
+\end{center}
+for all $u \in C_c^1 (R^n)$
+
+\textbf {Theorem 2 (Estimates for $W^{1,p}, 1 \leq p < n)$} Let U be a bounded, open subset of $R^n$ and suppose $\partial U$ is $C^1$. Assume $1 \leq p < n$, and $u \in W^{1,p}(U)$. Then $u \in L^{p*}(U)$ with the estimate 
+ \begin{center}
+$||u||_{L^{p*}(U)} \leq C ||u||_{W^{1,p} (U)}$
+\end{center}
+the constant C depending only on p, n and U.
+
+\textbf {Theorem 3 (Estimates for $W_0^{1,p}, 1 \leq p < n)$}. Assume U is a bounded open subset of $R^n$. Suppose $u \in W_0^{1,p} (U)$ for some $1 \leq p < n$. Then we have the estimate
+ \begin{center}
+$||u||_{L^{q}(U)} \leq C||Du||_{L^{p}(U)}$
+\end{center}
+for each $q \in [1, p*]$, the constant C depending only on p,q, n and U. \\
+In particular, for all $1 \leq p \leq \infty$
+ \begin{center}
+$||u||_{L^{p}(U)} \leq C ||Du||_{L^{p}(U)}$
+\end{center}
+
+\textbf {Theorem 4 (Morrey's inequality)} Assume $n < p \leq \infty$. Then there exists a constant C, depending only on p and n, such that
+ \begin{center}
+$||u||_{C^{0, \gamma} (R^n)} \leq C||u||_{W^{1,p}(R^n)}$
+\end{center}
+for all $u \in C^1(R^n)$, where 
+ \begin{center}
+$\gamma := 1- n/p$
+\end{center}
+
+\textbf {Definition} We say u* is a version of a given function u provided 
+ \begin{center}
+$u = u*$ a.e.
+\end{center}
+
+\textbf {Theorem 5 (Estimates for $W^{1,p}, n < p \leq \infty$)}. Let U be a bounded, open subset of $R^n$ and suppose $\partial U$ is $C^1$. Assume $n < p \leq \infty$ and $u \in W^{1,p}(U)$. Then u has a version $v* \in C^{0, \gamma}(\bar{U})$, for $\gamma = 1 - \frac{n}{p}$ with the estimate
+ \begin{center}
+$||u*||_{C^{0, \gamma}(\bar{U})} \leq C||u||_PW^{1,p}(U)$
+\end{center}
+The constant C depends only on p, n and U.
+
+\textbf {Theorem 6 (General Sobolev inequalities)} Let U be a bounded open subset of $R^n$ with a $C^1$ boundary. Assume $u \in W^{k,p}(U)$ \\
+\tab (i) If
+ \begin{center}
+$ k < \frac{n}{p}$
+\end{center}
+then $u \in L^q (U)$ where
+ \begin{center}
+$ \frac{1}{q} = \frac{1}{p} - \frac{k}{n}$
+\end{center}
+We have in addition the estimate 
+ \begin{center}
+$||u||_{L^{q}(U)} \leq C||u||_{W^{k,p} (U)}$
+\end{center}
+the constant C depending only on k, p, n and U \\
+\tab (ii) If
+ \begin{center}
+$k > \frac{n}{p}$
+\end{center}
+then $u \in C^{k-[\frac{n}{p}]-1, \gamma} (\bar{U})$, where
+ \begin{center}
+$\gamma = \{ [\frac{n}{p} + 1 - \frac{n}{p}$, if $\frac{n}{p}$ is not an integer \\
+\tab \{ any positive number $< 1$ if $\frac{n}{p}$ is an integer
+\end{center}
+We have in addition the estimate
+ \begin{center}
+$||u||_{C^{k-[\frac{n}{p}]-1, \gamma}(\bar{U})} \leq C||u||_{W^{k,p}(U)}$,
+\end{center}
+the constant C depending only on $k, p, n, \gamma$ and U
+
+\textbf {Chapter 5.7 Compactness}
+
+\textbf {Definition} Let X and Y be Banarch spaces, $X \subset Y$. We say that X is compactly embedded in Y, written
+ \begin{center}
+$X \subset \subset Y$
+\end{center}
+provided \\
+\tab (i) $||u||_Y \leq C||u||_X (u \in X)$ for some constant C \\
+and \\
+\tab (ii) Each bounded sequence in X is precompact in Y.
+
+\textbf {Theorem 1 (Rellich-Kondrachov Compactness Theorem)}. Assume U is a bounded open subset of $R^n$ and $\partial U$ is $C^1$. Suppose $1 \leq p < n$. Then 
+ \begin{center}
+$W^{1,p}(U) \subset \subset L^q (U)$
+\end{center}
+for each $1 \leq q < p*$
+
+\textbf {Chapter 5.8 Additional topics}
+
+\textbf {Theorem 1 (Poincare's inequality)} Let U be a bounded, connected open subset of $R^n$ with a $C^1$ boundary $\partial U$. Assume $1 \leq p \leq \infty$. Then there exists a constant C, depending only on n,p, and U, such that
+ \begin{center}
+$||u-(u)_U||_{L^{p}(U)} \leq C||D_u||_{L^{p}(U)}$
+\end{center}
+for each function $u \in W^{1,p} (U)$
+
+\textbf {Theorem 2 (Poincare's inequality for a ball)} Assume $1 \leq p \leq \infty$. Then there exists a constant C, depending only on n and p, such that
+ \begin{center}
+$||u-(u)_{x,r}||_{L^{p}(B(x,r))} \leq Cr ||Du||_{L^{p}(B(x,r))}$
+\end{center}
+for each ball $B(x,r) \subset R^n$ and each function $u \in W^{1,p}(B^0(x,r))$
+
+\textbf {Definition} \\
+\tab (i) The ith-difference quotient of size h is
+ \begin{center}
+$D_i^h u(x) = \frac{u(x+he_i)-u(x)}{h} \tab (i = 1,...,n)$
+\end{center}
+for $x \in V$ and $h \in R, 0 < |h| < dist(V, \partial U)$ \\
+\tab (ii) $D^h u := (D_1^h u ,..., D_n^h u)$
+
+\textbf {Theorem 3 (Difference quotients and weak derivatives)} \\
+\tab (i) Suppose $1 \leq p < \infty$ and $u \in W^{1,p}(U)$. Then for each $V \subset \subset U$ 
+ \begin{center}
+$||D^h u ||_{L^{p}(V)} \leq C||Du||_{L^{p}(U)}$
+\end{center}
+for some constant C and all $0 < |h| < \frac{1}{2} dist (V, \partial U)$. \\
+\tab (ii) Assume $1 < p < \infty, u \in L^p(V)$, and there exists a constant C such that 
+ \begin{center}
+$||D^h u||_{L^{p}(V)} \leq C$
+\end{center}
+for all $0 < |h| < \frac{1}{2} dist (V, \partial U)$. Then
+ \begin{center}
+$u \in W^{1,p}(V)$ \tab with $||Du||_{L^{p}(V)} \leq C$.
+\end{center}
+
+\textbf {Theorem 4 (Characterization of $W^{1,\infty}$)} Let U be open and bounded with $\partial U$ of class $C^1$. Then $u : U \to R$ is Lipschitz continuous if and only if $u \in W^{1, \infty}(U)$dd
+
+\textbf {Definition} A function $u : U \to R$ is differentiable at $x \in U$ if there exists $a \in R^n$ such that
+ \begin{center}
+$u(y) = u(x) + a \cdot (y-x) + o(|y=x|)$ \tab as $y \to x$
+\end{center}
+In other words,
+ \begin{center}
+$\lim_{y \to x} \frac{|u(y) - u(x) - a \cdot (y-x)|}{|y-x|} = 0$
+\end{center}
+
+\textbf {Theorem 5 (Differentiability almost everywhere)} Assume $u \in W_{loc}^{1,p}(U)$ for some $n < p \leq \infty$. Then u is differentiable a.e. in U and its gradient equals its weak gradient a.e.
+
+\textbf {Theorem 6 (Rademacher's Theorem)} Let u be locally Lipschitz continuous in U. Then u is differentiable almost everywhere in U.
+
+\textbf {Theorem 7 (Hardy's inequality)}. Assume $n \geq 3$ and $r > 0$ . Suppose that $u \in H^1 (B(0,r))$. \\
+\tab Then $\frac{u}{|x|} \in L^2(B(0,r))$, with the stimate
+ \begin{center}
+$\int_{B(0,r)} \frac{u^2}{|x|^2} dx \leq C \int_{B(0,r)} |Du|^2 + \frac{u^2}{r^2} dx$
+\end{center}
+
+\textbf {Theorem 8 (Characterization of $H^k$ by Fourier transform)} \\
+Let k be a nonnegative integer \\
+\tab (i) A function $u \in L^2(R^n)$ belongs to $H^k (R^n)$ if and only if 
+ \begin{center}
+$(1 + |y|^k)\hat{u} \in L^2(R^n)$
+\end{center}
+\tab (ii) In addition, there exists a positive constant C such that
+ \begin{center}
+$\frac{1}{C}||u||_{H^{k}(R^n)} \leq ||(1 + |y|^k(\hat{u}))||_{L^{2}(R^n)} \leq C||u||_{H^{k}(R^n)}$
+\end{center}
+for each $u \in H^{k}(R^n)$
+
+\textbf {Definition} Assume $0 < s < \infty$ and $u \in L^2(R^n)$. Then $u \in H^s(R^n)$ if $(1 + |y|^s)\hat{u} \in L^2(R^n)$. For noninteger s , we set 
+ \begin{center}
+$||u||_{H^{s}(R^n)} := ||(1 + |y|^s)\hat{u}||_{L^{2}(R^n)}$
+\end{center} 
+
+\textbf {Other spaces of functions} 
+
+\textbf {Definition} We denote by $H^{-1}(U)$ the dual space to $H_0^1 (U)$.
+
+\textbf {Definition} If $f \in H^{-1}(U)$, we define the norm
+ \begin{center}
+$||f||_{H^{-1}(U)} := sup \{ \langle f, u \rangle | u \in H_0^1(U), ||u||_{H_{0}^{1}(U)} \leq 1 \}$
+\end{center}
+
+\textbf {Theorem 1 (Characterization of $H^{-1}$)}. \\
+\tab (i) Assume $f \in H^{-1}(U)$. Then there exists functions $f^0, f^1 ,..., f^n$ in $L^2(U)$ such that
+ \begin{center}
+$\langle f, v \rangle = \int_U f^0 v + \sum_{i=1}^n f^{i} v_{x_{i}} dx \tab (v \in H_0^1 (U))$
+\end{center}
+\tab (ii) Furthermore, 
+ \begin{center}
+$||f||_{H^{-1}(U)} = inf \{ ( \int_U \sum_{i=0}^n |f^i|^2 dx )^{1/2} |$
+\end{center}
+\tab \tab f satisfies (1) for $f^0,..., f^n \in L^2(U)$ \} \\
+\tab (iii) In particular, we have 
+ \begin{center}
+$(v, u)_{L^{2}(U)} = \langle v, u \rangle$
+\end{center}
+for all $u \in H_0^1(U), v \in L^2(U) \subset H^{-1}(U)$
+
+\textbf {Definition} The space
+ \begin{center}
+$L^p (0, T; X)$
+\end{center}
+consists of all strongly measurable functions $u: [0, T] \to X$ with 
+ \begin{center}
+$||u||_{L^{p}(0, T; X)} := ( \int_0^T ||u(t)||^p dt )^{1/p} < \infty$
+\end{center}
+for $1 \leq p < \infty$ and 
+ \begin{center}
+$||u||_{L^{\infty}(0, T; X)} := ess sup_{0 \leq t \leq T} ||u(t)||< \infty$
+\end{center}
+
+\textbf {Definition} The space
+ \begin{center}
+$C([0, T]; X)$
+\end{center}
+comprises all continuous $u : [0, T] \to X$ with 
+ \begin{center}
+$||u||_{C([0, T]; X)} := max_{0 \leq t \leq T} ||u(t)|| < \infty$
+\end{center}
+
+\textbf {Definition} Let $u \in L^1 (0, T; X)$. We say $v \in L^1 (0, T; X)$ is the weak derivative of u, written
+ \begin{center}
+$u^{'} = v$
+\end{center}
+provided
+ \begin{center}
+$\int_0^T \phi^{'}(t) u(t) dt = - \int_0^T \phi(t) v(t) dt$
+\end{center}
+for all scalar test fucntions $\phi \in C_c^{\infty} (0, T)$
+
+\textbf {Definitions} (i) The sobolev space
+ \begin{center}
+$W^{1,p} (0, T; X)$
+\end{center}
+consists of all functions $u \in L^p (0, T; X)$ such that u' exists in the weak sense and belongs to $L^p (0, T; X)$ Furthermore,
+ \begin{center}
+$||u||_{W^{1,p}(0, T; X)} := \{ ( \int_0^T ||u(t)||^p + ||u'(t)||^p dt )^{1/p} \tab ( 1 \leq p < \infty)$ \\
+\tab \tab \{ ess $sup_{0 \leq t \leq T}(||u(t)|| + ||u'(t)||) \tab (p = \infty)$ \\
+We write $H^1(0, T; X) = W^{1,2} (0, T; X)$
+\end{center}
+
+\textbf {Theorem 2 (Calculus in an abstract space)} Let $u \in W^{1,p} (0, T; X)$ for some $1 \leq p \leq \infty$. Then \\
+\tab (i) $u \in C([0,T]; X)$ (after possibly being redefined on a set of measure zero). \\
+\tab (ii) $u(t) = u(s) + \int_s^t u'(\tau) d\tau$ \tab for all $0 \leq s \leq t \leq T$. \\
+\tab (iii) Furthermore, we have the estimate
+ \begin{center}
+$max_{0 \leq t \leq T} ||u(t)|| \leq C||u||_{W^{1,p}(0, T; X)}$
+\end{center}
+The constant C depending only on T.
+
+\textbf {Theorem 3 (More calculus)} Suppose $u \in L^2 (0, T; H_0^1(U))$, with $u' \in L^2(0, T; H^{-1}(U))$. \\
+\tab (i) Then
+ \begin{center}
+$u \in C([0, T]; L^2(U))$
+\end{center}
+(after possibly being redefined on a set of measure zero). \\
+\tab (ii) The mapping 
+ \begin{center}
+$t \mapsto ||u(t)||^{2}_{L^{2}(U)}$
+\end{center}
+is absolutely continuous with 
+ \begin{center}
+$\frac{d}{dt}||u(t)||^2_{L^{2}(U)} = 2 \langle u'(t), u(t) \rangle$
+\end{center}
+for a.e. $0 \leq t \leq T$ \\
+\tab (iii) Furthermore, we have the estimate
+ \begin{center}
+$max_{0 \leq t \leq T} ||u(t)||_{L^{2}(U)} \leq C (||u||_{L^{2}(0, T; H_{0}^{1}(U))} + ||u'||_{L^{2}(0, T; H^{-1}(U))})$,
+\end{center}
+the constant C depending only on T.
+
+\textbf {Theorem 4 (Mappings into better spaces)} Assume that U is open bounded, and $\partial U$ is smooth. Take m to be a nonnegative integer.  \\
+\tab Suppose $u \in L^2 (0, T; H^{m+2}(U))$, with $u' \in L^2(0, T; H^{m}(U))$ \\
+\tab (i) Then 
+ \begin{center}
+$u \in C ([0, T]; H^{m+1}(U))$
+\end{center}
+(after possibly being redefined on a set of measurable zero). \\
+\tab (ii) Furthermore, we have the estimate
+ \begin{center}
+$max_{0 \leq t \leq T} ||u(t)||_{H^{m+1}(U)} \leq C (||u||_{L^{2}(0, T; H^{m+2}(U))}$ + $||u'||_{L^{2}(0, T; H^{m}(U))})$
+\end{center}
+the constant C depending only on T, U and m.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

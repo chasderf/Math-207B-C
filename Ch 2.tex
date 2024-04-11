@@ -1,0 +1,376 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage[mathscr]{euscript}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+
+\title {Math 207B Partial  Differential Equations: Ch 2: Equations with Explicit solutions}
+
+\author{Charlie Seager}
+
+\maketitle
+
+\textbf {Part 1 Representation Formulas for Solutions: Ch 2: Equations with Explicit solutions: Four Important Linear PDE: Transport equation, Laplaces equation, heat equation, and wave equation}
+
+\textbf {Here are the 4 equations} 
+\begin{center}
+the transport equation \tab $u_t + b \cdot Du = 0$ (2.1) \\
+laplaces equation \tab $\triangle u = 0$ (2.2) \\
+the heat equation \tab $u_t - \triangle u = 0$ (2.3) \\
+the wave equation \tab $u_{tt} - \triangle u = 0$ (2.4)
+\end{center}
+
+\textbf {Chapter 2.1 Transport Equation}
+
+\textbf {Chapter 2.2 Laplaces Equation} \\
+Among the most inportant of all partial differential equations are undoubtedly Laplace's equation
+$\triangle u = 0$ \\
+and Poisson's equation
+$- \triangle u = f$ 
+
+\textbf {Definition} A $C^2$ function u satisfying (1) is called a harmonic function.
+
+\textbf {Physical interpretation} Laplace's equation comes up in a wide variety of physical contexts. In a typical intepretation y denotes the density of some quality (e.g. a chemical concentration) in equilibrium. Then if V is any smooth subregion within U, the net flex of u through $\partial V$ is zero
+\begin{center}
+$\int_{\partial V} F \cdot vds = 0$
+\end{center}
+F denoting the flux density and v the unit outer normal field. In view of the Gauss-Gree Theorem (C.2), we have
+\begin{center}
+$\int_V div F dx = \int_{\partial V} F \cdot vds = 0$
+\end{center}
+and so
+\begin{center}
+div F = 0 \tab in U
+\end{center}
+
+\textbf {Definition} The function
+\begin{center}
+$\Phi (x) := \{ -\frac{1}{2 \pi} log |x|$ \tab (n=2) \\
+\tab \tab $\{\frac{2}{n(n-2)\alpha (n)} \frac{1}{|x|^{n-2}} \tab (n \geq 3)$ 
+\end{center}
+defined for $x \in R^n, x \neq 0$ is the fundamental solution of Laplace's equation.
+
+\textbf {Theorem 1 (Solving Poisson's equation)} Define u by (8). Then
+\begin{center}
+(i) $u \in C^2 (R^n)$
+\end{center}
+and 
+\begin{center}
+(ii) $-\triangle u = f$ in $R^n$
+\end{center}
+
+\textbf {Intepretation of Fundamental Solution} We sometimes write
+\begin{center}
+$- \triangle \Phi = \delta_0$ in $R^n$
+\end{center}
+
+\textbf {Theorem 2} (Mean-value formulas for Laplace's equation). If $u \in C^2(U)$ is harmonic, then
+\begin{center}
+(16) \tab $u(x) = \fint_{\partial B(x,r)} uds = \fint_{B(x,r)} u dy$
+\end{center}
+for each ball $B(x,r) \subset U$
+
+\textbf {Theorem 3 (Converse to mean-value property)} If $u \in C^2(U)$ satisfies 
+\begin{center}
+$u(x) = \fint_{\partial B(x,r)} uds$
+\end{center}
+for each ball $B(x,r) \subset U$, then u is harmonic.
+
+\textbf {Theorem 4 (Strong Maximum Principle)} Suppose $u \in C^2(U) \cap C(\hat{U})$ is harmonic within U \\
+(i) Then
+\begin{center}
+$max_U u = max_{\partial U} U$
+\end{center}
+(ii) Furthermore, if U is connected and there exists a point $x_0 \in U$ such that 
+\begin{center}
+$u(x_0) = \max_{U} u$
+\end{center}
+then
+\begin{center}
+u is contant within U.
+\end{center}
+
+\textbf {Theorem 5 (Uniqueness)} Let $g \in C(\partial U), f \in C(U)$. Then there exists at most one solution $u \in C^2 (U) \cap C(\hat{U})$ of the boundary-value problem
+\begin{center}
+(17) \tab $\{ - \triangle u = f$ in U \\
+\tab $\{ u = g$ on $\partial U$
+\end{center}
+
+\textbf {Theorem 6 (Smoothness)} If $u \in C(U)$ satisfies the mean-value property (16) for each ball $B(x,r) \subset U$ then
+\begin{center}
+$u \in C^{\infty} (U)$
+\end{center}
+Note carefully, that u may not be smooth, or even continous, up to $\partial U$
+
+\textbf {Theorem 7 (Estimates on derivatives)} Assume u is harmonic in U, Then 
+\begin{center}
+(18) $|D^{\alpha} U(x_0)| \leq \frac{C_k}{r^{n+k}}||u||_{L^{1}(B(x_0, r))}$
+\end{center}
+for each ball $B(x_0, r) \subset U$ and each multiindex $\alpha$ of order $|\alpha| = k$ \\
+Here
+\begin{center}
+(19) $C_0 = \frac{1}{\alpha(n)}, C_k = \frac{(2^{n+1}nk)^k}{\alpha(n) } (k=1,...)$
+\end{center}
+
+\textbf {Liouville's Theorem} We assert now that there are no nontrivial bounded harmonic function on all of $R^n$.
+
+\textbf {Theorem 8 (Liouvill's Theorem} Suppose $u:R^n \to R$ is harmonic and bounded. Then u is constant.
+
+\textbf {Theorem 9 (Representation formula)} Let $f \in C^2_c(R^n), n \geq 3$ Then any bounded solution of 
+\begin{center}
+$-\triangle u = f$ \tab in $R^n$
+\end{center} 
+has the form
+\begin{center}
+$u(x) = \int_{R^n} \Phi(x-y)f(y) dy + C \tab (x \in R^n)$
+\end{center}
+for some constant C.
+
+\textbf {Theorem 10 (Analyticity)} Assume u is harmonic in U. Then u is analytic in U.
+
+\textbf {Theorem 11 (Harnack's inequality)} For each connected open set V $\subset \subset U$, there exists a positive constant C, depending only on V, such that
+\begin{center}
+$sup_V u \leq C inf_V u$
+\end{center}
+for all nonnegative harmonic function u in U.
+
+\textbf {Definition} Green's function for the region U is 
+\begin{center}
+$G(x,y) := \Phi(y-x) - \phi^x(y) \tab (x,y \in U, x \neq y)$
+\end{center}
+
+\textbf {Theorem 12 (Representation formula using Green's function)} If $u \in C^2(\bar{U})$ solves problem (29), then
+\begin{center}
+(30) \tab $u(x) = -\int_{\partial U} g(y) \frac{\partial G}{\partial v} (x,y) dS(y) + \int_U f(y)G(x,y) dy \tab (x \in U)$ 
+\end{center}
+
+\textbf {Theorem 13 (Symmetry of Green's function)} For all $x,y \in U, x \neq y$ we have
+\begin{center}
+G(y,x) = G(x,y)
+\end{center}
+
+\textbf {Definition} If $x = (x_1,.., x_{n-1}, x_n) \in R^n_+$, its reflection in the plane $\partial R^n_+$ is the point
+\begin{center}
+$\bar{x} = (x_1, \dots, x_{n-1}, -x_n)$
+\end{center}
+
+\textbf {Definition} Green's function for the half space $R^n_+$ is 
+\begin{center}
+$G(x,y) := \Phi(y-x)- \Phi(y-\hat{x}) \tab (x,y \in R^n_+, x \neq y)$
+\end{center}
+Then
+\begin{center}
+$G_{y_{n}}(x,y) = \Phi_{y_{n}} (y-x) - \Phi_{y_{n}}(y-\tilde{x})$
+$= \frac{-1}{n\alpha(n)} [\frac{y_n - x_n}{[y-x]^n} - \frac{y_n + x_n}{|y-\tilde{x}|^n}]$
+\end{center}
+
+\textbf {Theorem 14 (Poisson's formula for half-space)} Assume $g \in C(R^{n-1}) \cap L^{\infty}(R^{n-1})$, and define u by (33). Then
+\begin{center}
+(i) $u \in C^{\infty}(R^n_+) \cap L^{\infty} (R^n_+)$ \\
+(ii) $\triangle u = 0$ in $R^n_+$
+\end{center}
+and 
+\begin{center}
+(iii) $\lim{{x \to x_n^0}_{x \in R_+^n}} u(x) = g(x^0)$ for each point $x^0 \in \partial R^n_+$
+\end{center}
+
+\textbf {Definition} If $x \in R^n - \{0\}$, the point
+\begin{center}
+$\tilde{x} = \frac{x}{|x|^2}$
+\end{center}
+is called the point dual to x with respect to $\partial B$(0,1). The mapping $x \mapsto \tilde{x}$ is inversion through the unit sphere $\partial B(0,1)$
+
+\textbf {Definition} Green's function for the unit ball is
+\begin{center}
+(41) \tab $G(x,y) := \Phi(y-x) - \Phi(|x|(y-\tilde{x})) \tab (x,y \in B(0,1), x \neq y)$
+\end{center}
+
+\textbf {Theorem 15 (Poisson's formula for ball)} Assume $g \in C(\partial B(0,r))$ and define u by (45). Then
+\begin{center}
+(i) $u \in C^{\infty} (B^0(0,r))$ \\
+(ii) $\triangle u = 0$ in $B^0(0,r)$
+\end{center}
+and 
+\begin{center}
+$ (iii) \lim {x \to x^0}_{x \in B^0(0,r)} u(x) = g(x^0)$ for each point $x^0 \in \partial B(0,r)$
+\end{center}
+
+\textbf {Theorem 16 (Uniqueness)} There exists at most one solution $u \in C^2(\tilde{U})$ of (46).
+
+\textbf {Theorem 17 (Dirichlet's principle)} Assume $u \in C^2(\tilde{U})$ solves (46) Then
+\begin{center}
+$f|u| = min_{\omega \in \mathscr{A}} I |\omega|$
+\end{center}
+conversely, if $u \in \mathscr{A}$ satisfies (47), then u solves the boundary-value problem (46).
+
+\textbf {Chapter 2.3 Heat equation} Physical intepretation: The heat equation, also known as the diffusion equation describes in typical applications the evolution in time of the density u of some quantity such as heat, chemical concentration, etc.
+
+\textbf {Definition} The function
+\begin{center}
+$\Phi(x,t) := \{ \frac{1}{(4 \pi t)^{n/2}} e^{-\frac{|x|^2}{4t}} (x \in R^n, t > 0)$ \\
+\tab \{ 0 \tab $(x \in R^n, t < 0)$
+\end{center}
+is called the fundamental solution of the heat equation.
+
+\textbf {Lemma (Integral of fundamental solution)} For each time $t > 0$
+\begin{center}
+$\int_{R^n} \Phi(x,t) dx = 1$ 
+\end{center}
+
+\textbf {Theorem 1 (Solution of initial-value problem)} Assume $g \in C(R^n) \cap L^{\infty}(R^n)$ and define u by (9). Then
+\begin{center}
+(i) $u \in C^{\infty} (R^n x (0, \infty))$ \\
+(ii) $u_t(x,t) - \triangle u (x,t) = 0 (x \in R^n, t > 0)$
+\end{center}
+and 
+\begin{center}
+(iii) $lim_{{(x,t) \to (x^0, 0)}_{x \in R^n, t > 0}} u(x,t) = g(x^0)$ for each point $x^0 \in R^n$
+\end{center}
+
+\textbf {Theorem 2 (Solution of nonhomogeneous problem)} Define u by (13). Then \\
+(i) \tab $u \in C^2_1 (R^n x (0, \infty))$ \\
+(ii) \tab $u_t(x,t) - \triangle u(x,t) = f(x,t) \tab (x \in R^n, t>0)$ \\
+and \\
+(iii) $\lim_{(x,t) \to (x^0, 0)}{x \in R^n, t >0} u(x,t) = 0$ for each point $x^0 \in R^n$
+
+\textbf {Definitions} \\
+(i) We define the parabolic cylinder
+\begin{center}
+$U_T := U x (0, T].$
+\end{center}
+(ii) The parabolic boundary of $U_T$ is 
+\begin{center}
+$\Gamma_T := \tilde{U}_T - U_T$
+\end{center}
+
+\textbf {Definition} For fixed $x \in R^n, t \in R, r > 0$, we define
+\begin{center}
+$E(x,t;r) := \{ (y,s) \in R^{n+1} | s \leq t, \Phi(x-y, t-s) \geq \frac{1}{r^n} \}$
+\end{center}
+
+\textbf {Theorem 3 (A mean-value property for the heat equation)} Let $u \in C^2_1 (U_T)$ solve the heat equation. Then
+\begin{center}
+(19) \tab $u(x,t) = \frac{1}{4r^n} \int \int_{E(x,t;r)} u(y,s) \frac{|x-y|^2}{(t-s)^2} dyds$
+\end{center}
+for each $E(x,t;r) \subset U_T$.
+
+\textbf {Theorem 4 (Strong maximum principle for the heat equation)} Assume $u \in C_1^2(U_T) \cap C(\tilde{U}_T)$ solves the heat equation in $U_T$ \\
+\tab (i) Then
+\begin{center}
+$max_{\tilde{U}_T} u = max_{\Gamma_T} u$
+\end{center}
+(ii) Furthermore, if U is connected and there exists a point $(x_0, t_0) \in U_T$ such that 
+\begin{center}
+$u(x_0, t_0) = max_{\tilde{U}_T} u$
+\end{center}
+then
+\begin{center}
+u is constant in $\tilde{U}_{t_0}$
+\end{center}
+
+\textbf {Theorem 5 (Uniqueness on bounded domains)} Let $g \in C(\Gamma_T), f \in C(U_T)$. Then there exists at most one solution $u \in C_1^2(U_T) \cap C(\tilde{U}_T)$ of the initial/boundary-value problem
+\begin{center}
+(22) \tab \{ $u_t - \triangle u = f \tab$ in $U_T$ \\
+\tab \{ \tab u = g \tab on $\Gamma_T$
+\end{center}
+
+\textbf {Theorem 6 (Maximum principle for the Cauchy problem)} Suppose $u \in C_1^2(R^n x (0,T]) \cap C(R^n x [0, T])$ solves
+\begin{center}
+(23) \tab \{ $u_t - \triangle u = 0$ \tab in $R^n x (0,T)$ \\
+ \tab \{ \tab  u = g \tab on $R^n x \{t = 0\}$
+\end{center}
+and satisfies the growth estimate
+\begin{center}
+(24) \tab \tab $u(x,t) \leq Ae^{a|x|^2} \tab (x \in R^n, 0 \leq t \leq T)$
+\end{center}
+for constants $A, a > 0$. Then
+\begin{center}
+$sup_{R^n x [0,T]} u = sup_{R^n} g$
+\end{center}
+
+\textbf {Theorem 7 (Uniqueness for cauchy problem)} Let $g \in C(R^n), f \in C(R^n x [0,T])$. Then there exists at most one solution $u \in C_1^2(0, T] \cap C(R^n x [0,T])$ of the initial value problem
+\begin{center}
+$\{ u_t - \triangle u = f$ \tab in $R^n x (0,T) 
+ \{ \tab u = g \tab$ in $R^n x \{t = 0\}$
+\end{center}
+satisfying the growth estimate
+\begin{center}
+$|u(x,t)| \leq Ae^{a|x|^2} \tab (x \in R^n, 0 \leq t \leq T)$
+\end{center}
+for constants $A, a > 0$
+
+\textbf {Theorem 8 (Smoothness)}. Suppose $u \in C_1^2(U_T)$ solves the heat equation in $U_T$. Then
+\begin{center}
+$u \in C^{\infty}(U_T)$
+\end{center}
+
+\textbf {Theorem 9 (Estimates on derivatives)} There exists for each pair of integers k, l = 0,1,... a constant $C_{k,l}$ such that 
+\begin{center}
+$max{C(x,t; r/2)} |D_x^k D_t^l u| \leq \frac{C_{kl}}{r^{k+2l+n+2}}||u||_{L^1(C(x,t;r))}$
+\end{center}
+for all cylinders $C(x, t;r/2) \subset C(x,t;r) \subset U_T$ and all solutions u of the heat equaiton in $U_T$
+
+\textbf {Theorem 10 (Uniqueness)} There exists only one solution $u \in C_1^2(\tilde{U}_T)$ of the initial/boundary-value problem.
+
+\textbf {Theorem 11 (Backwards uniqueness)} Suppose $u, \tilde{u} \in C^2(\tilde{U}_T)$ solve (42), (43). If 
+\begin{center}
+$u(x,T) = \tilde{u}(x,T) \tab (x \in U)$
+\end{center}
+then
+\begin{center}
+$u = \tilde{u}$ within $U_T$
+\end{center}
+
+\textbf {Chapter 2.4 Wave Equation}: Physical interpretation: The wave equaiton is a simplified model for a vibrating string (n=1), membrane (n=2), or elastic solid (n=3). in these physical interpretations u(x,t) represents the displacement in some direction of the point x at time $t \geq 0$
+
+\textbf {Theorem 1 (Solution of wave equation, n = 1)} Assume $g \in C^2(R), h \in C^1(R)$ and define u by d'Alembert's formula (8). Then \\
+\tab (i) $u \in C^2(R x [0, \infty))$ \\
+\tab (ii) $u_{tt}-u_{xx} = 0$ in $R x (0, \infty)$, \\
+and \\
+\tab (iii) $lim_{{(x,t) \to (x^0, 0)}_{t>0}} u(x,t) = g(x^0), lim_{{(x,t) \to (x^0, 0)}_{t>0}} u_t(x,t) = h(x^0)$ \\
+for each point $x^0 \in R$
+
+\textbf {Theorem 2 (Solution of wave equation in odd dimension)} Assume n is an odd integer, $n \geq 3$ and suppose also $g \in C^{m+1}(R^n), h \in C^m (R^n)$ for $m = \frac{n+1}{2}.$ Define u by (31). Then \\
+\tab (i) $u \in C^2(R^n x [0, \infty)),$ \\
+\tab (ii) $u_{tt} - \triangle u = 0$ in $R^n x (0, \infty)$ \\
+and \\
+\tab (iii) $lim_{{(x,t) \to (x^0, 0)}_{x \in R^n, t>0}} u(x,t) = g(x^0), lim_{{(x,t) \to (x^0, 0)}_{x \in R^n, t>0}} u_t(x,t) = h(x^0)$
+
+\textbf {Theorem 3 (Solution of wave equation in even dimensions)} Assume n is an even integer, $n \geq 2$, and suppose also $g \in C^{m+1}(R^n), h \in C^m(R^n)$ for $m=\frac{n+1}{2}$. Define u by (38). Then \\
+\tab (i) $u \in C^2(R^n x [0,\infty))$ \\
+\tab (ii) $u_{tt} - \triangle u = 0$ \tab in $R^n x (0, \infty)$ \\
+and \\
+\tab (iii) $lim_{{(x,t) \to (x^0,0)}_{x \in R^n, t>0}} u(x,t) = g(x^0) lim_{{(x,t) \to (x^0,0)}_{x \in R^n, t>0}} u_t(x,t) = h(x^0)$
+
+\textbf {Theorem 4 (Solution of nonhomogeneous wave equation)} Assume that $n \geq 2$ and $f \in C^{|n/2|+1}(R^n x [0, \infty))$ Define u by (41). Then \\
+\tab (i) $u \in C^2(R^n x [0,\infty)),$ \\
+\tab (ii) $u_{tt} - \triangle u = f$ \tab in $R^n x (0, \infty)$ \\
+and \\
+\tab (iii) $lim_{{(x,t) \to (x^0,0)}_{x \in R^n, t>0}} u(x,t) = 0 \tab lim_{{(x,t) \to (x^0,0)}_{x \in R^n, t>0}} u_t(x,t) = 0$ for each point $x^0 \in R^n$
+
+\textbf {Theorem 5 (Uniqueness for wave equation)}. There exists at most one function $u \in C^2 (\tilde{U}_T)$ solving (45).
+
+\textbf {Theorem 6 (Finite propogation speed)}. If $u = u_t = 0$ on $B(x_0, t_0) x \{t=0\}$ then u=0 within the cone $K(x_0, t_0)$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
